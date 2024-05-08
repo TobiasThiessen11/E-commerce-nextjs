@@ -1,113 +1,128 @@
 import Image from "next/image";
+import  Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+   <div>
+   <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+   <div className=" px-4 md:px-6">
+     <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-center">
+       <div className="md:order-1">
+       <Image
+       src="/hero-desktop.png"
+       width={1000}
+       height={760}
+       className="hidden md:block"
+       alt="Screenshots of the dashboard project showing desktop version"
+     />
+       </div>
+       <div className="space-y-4">
+         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+           Discover the Cutest Movie Merch
+         </h1>
+         <p className="max-w-[700px] text-[#4099bf] md:text-xl dark:text-[#4099bf]">
+           Discover the Cutest Movie Merch
+         </p>
+         <div className="flex flex-col gap-2 min-[400px]:flex-row">
+           <Link
+             className="inline-flex h-10 items-center justify-center rounded-md bg-[#4169E1] px-8 text-sm font-medium text-[#F0F8FF] shadow transition-colors hover:bg-[#4169E1]/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#4169E1] disabled:pointer-events-none disabled:opacity-50 dark:bg-[#F0F8FF] dark:text-[#4169E1] dark:hover:bg-[#F0F8FF]/90 dark:focus-visible:ring-[#4169E1]"
+             href="#"
+           >
+             Shop the Collection
+           </Link>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <section className="w-full py-12 md:py-24 lg:py-32">
+   <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-6">
+     <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
+       <Link className="absolute inset-0 z-10" href="#">
+         <span className="sr-only">View Product</span>
+       </Link>
+       <Image
+         src="/hero-desktop.png"
+         width={1000}
+         height={760}
+         className="hidden md:block"
+         alt="Screenshots of the dashboard project showing desktop version"
+       />
+       <div className="bg-[#F0F8FF] p-4 dark:bg-[#F0F8FF]">
+         <h3 className="font-bold text-xl">Pikachu Plushie</h3>
+         <p className="text-sm text-[#87CEEB]">Soft and cuddly</p>
+         <h4 className="font-semibold text-lg md:text-xl">$24.99</h4>
+       </div>
+     </div>
+     <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
+       <Link className="absolute inset-0 z-10" href="#">
+         <span className="sr-only">View Product</span>
+       </Link>
+       <Image
+         src="/hero-desktop.png"
+         width={1000}
+         height={760}
+         className="hidden md:block"
+         alt="Screenshots of the dashboard project showing desktop version"
+       />
+       <div className="bg-[#F0F8FF] p-4 dark:bg-[#F0F8FF]">
+         <h3 className="font-bold text-xl">Baby Yoda Keychain</h3>
+         <p className="text-sm text-[#87CEEB]">Adorable and practical</p>
+         <h4 className="font-semibold text-lg md:text-xl">$9.99</h4>
+       </div>
+     </div>
+     <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
+       <Link className="absolute inset-0 z-10" href="#">
+         <span className="sr-only">View Product</span>
+       </Link>
+       <Image
+         src="/hero-desktop.png"
+         width={1000}
+         height={760}
+         className="hidden md:block"
+         alt="Screenshots of the dashboard project showing desktop version"
+       />
+       <div className="bg-[#F0F8FF] p-4 dark:bg-[#F0F8FF]">
+         <h3 className="font-bold text-xl">Groot Figurine</h3>
+         <p className="text-sm text-[#87CEEB]">Detailed and collectible</p>
+         <h4 className="font-semibold text-lg md:text-xl">$34.99</h4>
+       </div>
+     </div>
+   </div>
+ </section>
+ <section className="w-full py-12 md:py-24 lg:py-32 bg-[#F0F8FF] dark:bg-[#F0F8FF]">
+   <div className=" grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
+     <div className="space-y-3">
+       <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Why Choose Our Store?</h2>
+       <p className="mx-auto max-w-[700px] text-[#87CEEB] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-[#87CEEB]">
+         We pride ourselves on offering the highest quality movie merchandise, fast shipping, and a satisfaction
+         guarantee.
+       </p>
+     </div>
+     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+       <div className="bg-[#F0F8FF] p-6 rounded-lg shadow-lg dark:bg-[#F0F8FF]">
+         <h3 className="text-xl font-bold mt-4">High-Quality Products</h3>
+         <p className="text-[#87CEEB] dark:text-[#87CEEB] mt-2">
+           Our merchandise is made with the utmost care and attention to detail, ensuring a long-lasting and
+           enjoyable experience.
+         </p>
+       </div>
+       <div className="bg-[#F0F8FF] p-6 rounded-lg shadow-lg dark:bg-[#F0F8FF]">
+         <h3 className="text-xl font-bold mt-4">Fast Shipping</h3>
+         <p className="text-[#87CEEB] dark:text-[#87CEEB] mt-2">
+           We understand the excitement of receiving your order, which is why we offer fast and reliable shipping
+           to get your items to you quickly.
+         </p>
+       </div>
+       <div className="bg-[#F0F8FF] p-6 rounded-lg shadow-lg dark:bg-[#F0F8FF]">
+         <h3 className="text-xl font-bold mt-4">Satisfaction Guarantee</h3>
+         <p className="text-[#87CEEB] dark:text-[#87CEEB] mt-2">
+           We offer a 30-day money-back guarantee on all orders. If you are not completely satisfied with your
+         </p>
+       </div>
+     </div>
+   </div>
+ </section>
+   </div>
+  )
 }

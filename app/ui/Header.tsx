@@ -6,7 +6,7 @@ export const Header = () => {
   return (
   <>
     <div className='h-6 text-xs justify-center pt-1 text-center bg-secondary text-white'>Inicia sesion y consegui un descuento del 20% en tu primera orden</div>
-    <header className='flex items-center justify-between px-2 bg-gray-200'>
+    <header className='flex items-center sticky top-0 z-50 justify-between px-2 bg-gray-200'>
     <Link href={"/"} className='m-2 mt-3 text-black text-3xl font-bold'>Movie Merch</Link>
     <nav className='flex gap-6 items-center text-black font-semibold'>
         <Link href={"/"}>Productos</Link>

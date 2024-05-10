@@ -37,14 +37,14 @@ export default function Home() {
       <section className="w-full md:py-24 py-5 lg:py-10 bg-gray-50">
         <h2 className="text-center text-3xl mb-3 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:px-6">
-          <Card name="Buzz" image="/img/buzz.png" description="Muñeco que dispara fuegos" price="$ 200.000"/>
-          <Card name="Woody" image="/img/woody.png" description="Muñeco que dispara fuegos" price="$ 200.000"/>
-          <Card name="Lotzo" image="/img/buzz.png" description="Muñeco que dispara fuegos" price="$ 200.000"/>
+          <Card name="Buzz" image="/img/Stitch.png" description="Stitch attacks snacks! Next on his list? A Mickey Mouse Lollipop. " price="$ 20.000"/>
+          <Card name="Woody" image="/img/woody.png" description="Muñeco que dispara fuegos" price="$ 60.340"/>
+          <Card name="BD-1" image="/img/BD-1.png" description="BD-1 Interactive Remote Control Droid" price="$ 100.540"/>
         </div>
       </section>
 
 
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-[#F0F8FF] dark:bg-[#F0F8FF]">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-200">
         <div className=" grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
           <div className="space-y-3">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">¿Por que elegirnos?</h2>
@@ -60,16 +60,15 @@ export default function Home() {
               </p>
             </div>
             <div className="bg-[#F0F8FF] p-6 rounded-lg shadow-lg dark:bg-[#F0F8FF]">
-              <h3 className="text-xl font-bold mt-4">Fast Shipping</h3>
+              <h3 className="text-xl font-bold mt-4">Envios rápidos</h3>
               <p className="text-[#87CEEB] dark:text-[#87CEEB] mt-2">
-                We understand the excitement of receiving your order, which is why we offer fast and reliable shipping
-                to get your items to you quickly.
+                Entendemos que las necesidades de cada uno de nuestros clientes varían, por lo que ofrecemos envíos rápidos
               </p>
             </div>
             <div className="bg-[#F0F8FF] p-6 rounded-lg shadow-lg dark:bg-[#F0F8FF]">
-              <h3 className="text-xl font-bold mt-4">Satisfaction Guarantee</h3>
+              <h3 className="text-xl font-bold mt-4">Garantia de confianza</h3>
               <p className="text-[#87CEEB] dark:text-[#87CEEB] mt-2">
-                We offer a 30-day money-back guarantee on all orders. If you are not completely satisfied with your
+                Ofrecemos garantia de confianza a través de la compra de nuestro equipo de expertos en tecnología de punta
               </p>
             </div>
           </div>

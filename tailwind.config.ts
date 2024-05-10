@@ -21,6 +21,7 @@ const config: Config = {
           "error": "#d63c51",
           body:{
             "background-color": "white",
+            "font-family": "Baloo Paaji 2",
           }
         },
       },

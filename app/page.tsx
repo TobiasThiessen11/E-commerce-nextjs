@@ -4,42 +4,39 @@ import Card from "./ui/Card";
 
 export default function Home() {
   return (
-   <div>
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-        <div className="px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-center">
-          <div className="md:order-1 flex justify-center ">
-            <Image
-              src="/img/buzz.png"
-              width={500}
-              height={500}
-              className="hidden md:block"
-              alt=""
-            />
-          </div>
-            <div className="space-y-4">
-              <h1 className="text-3xl font-bold ml-3 tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Vos sos el protagonista.
-              </h1>
-              <p className="max-w-[700px] text-[#4099bf] ml-3 md:text-xl dark:text-[#4099bf]">
-                Empeza a ser el protagonista de tus peliculas favoritas
-              </p>
-              <div className="flex flex-col ml-3 gap-2 min-[400px]:flex-row">
-                <Link
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-[#4169E1] px-8 text-sm font-medium text-[#F0F8FF] shadow transition-colors hover:bg-[#4169E1]/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#4169E1] disabled:pointer-events-none disabled:opacity-50 dark:bg-[#F0F8FF] dark:text-[#4169E1] dark:hover:bg-[#F0F8FF]/90 dark:focus-visible:ring-[#4169E1]"
-                  href="#"
-                >
-                  Empeza ahora
-                </Link>
+   <div >
+        <section className="w-full py-6 md:py-24 lg:py-32 xl:py-20">
+          <div className="md:px-5">
+            <div className="grid gap-6 md:grid-cols-2 lg:gap-2 items-center">
+            <div className="md:order-1 flex justify-center ">
+              <Image
+                src="/img/buzz.png"
+                width={500}
+                height={500}
+                className="hidden md:block"
+                alt=""
+              />
+            </div>
+              <div className="space-y-4">
+                <h1 className="text-3xl font-bold ml-6 tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                    TODOS LOS PRODUCTOS DE TUS PELÍCULAS FAVORITAS
+                </h1>
+                <p className="max-w-[700px] text-[#4099bf] ml-6 md:text-xl dark:text-[#4099bf]">
+                  Empezá a ser el protagonista de tus películas favoritas
+                </p>
+                <div className="flex flex-col ml-6 min-[400px]:flex-row">
+                  <Link className="inline-flex h-10 w-auto items-center justify-center text-white bg-primary p-5 rounded-md "
+                    href="#">Empezá ahora
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
-      <section className="w-full md:py-24 lg:py-32 bg-gray-50">
+      <section className="w-full md:py-24 py-5 lg:py-10 bg-gray-50">
         <h2 className="text-center text-3xl mb-3 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:px-6">
           <Card name="Buzz" image="/img/buzz.png" description="Muñeco que dispara fuegos" price="$ 200.000"/>
           <Card name="Woody" image="/img/woody.png" description="Muñeco que dispara fuegos" price="$ 200.000"/>
           <Card name="Lotzo" image="/img/buzz.png" description="Muñeco que dispara fuegos" price="$ 200.000"/>

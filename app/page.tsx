@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import buzz from "../public/buzz.png";
+import Card from "./ui/Card";
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-center">
           <div className="md:order-1 flex justify-center ">
             <Image
-              src={buzz}
+              src="/img/buzz.png"
               width={500}
               height={500}
               className="hidden md:block"
@@ -19,93 +19,47 @@ export default function Home() {
           </div>
             <div className="space-y-4">
               <h1 className="text-3xl font-bold ml-3 tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                Discover the Cutest Movie Merch
+                Vos sos el protagonista.
               </h1>
               <p className="max-w-[700px] text-[#4099bf] ml-3 md:text-xl dark:text-[#4099bf]">
-                Discover the Cutest Movie Merch
+                Empeza a ser el protagonista de tus peliculas favoritas
               </p>
               <div className="flex flex-col ml-3 gap-2 min-[400px]:flex-row">
                 <Link
                   className="inline-flex h-10 items-center justify-center rounded-md bg-[#4169E1] px-8 text-sm font-medium text-[#F0F8FF] shadow transition-colors hover:bg-[#4169E1]/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#4169E1] disabled:pointer-events-none disabled:opacity-50 dark:bg-[#F0F8FF] dark:text-[#4169E1] dark:hover:bg-[#F0F8FF]/90 dark:focus-visible:ring-[#4169E1]"
                   href="#"
                 >
-                  Shop the Collection
+                  Empeza ahora
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-6">
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
-            <Link className="absolute inset-0 z-10" href="#">
-              <span className="sr-only">View Product</span>
-            </Link>
-            <Image
-              src="/hero-desktop.png"
-              width={1000}
-              height={760}
-              className="hidden md:block"
-              alt="Screenshots of the dashboard project showing desktop version"
-            />
-            <div className="bg-[#F0F8FF] p-4 dark:bg-[#F0F8FF]">
-              <h3 className="font-bold text-xl">Pikachu Plushie</h3>
-              <p className="text-sm text-[#87CEEB]">Soft and cuddly</p>
-              <h4 className="font-semibold text-lg md:text-xl">$24.99</h4>
-            </div>
-          </div>
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
-            <Link className="absolute inset-0 z-10" href="#">
-              <span className="sr-only">View Product</span>
-            </Link>
-            <Image
-              src="/hero-desktop.png"
-              width={1000}
-              height={760}
-              className="hidden md:block"
-              alt="Screenshots of the dashboard project showing desktop version"
-            />
-            <div className="bg-[#F0F8FF] p-4 dark:bg-[#F0F8FF]">
-              <h3 className="font-bold text-xl">Baby Yoda Keychain</h3>
-              <p className="text-sm text-[#87CEEB]">Adorable and practical</p>
-              <h4 className="font-semibold text-lg md:text-xl">$9.99</h4>
-            </div>
-          </div>
-          <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2">
-            <Link className="absolute inset-0 z-10" href="#">
-              <span className="sr-only">View Product</span>
-            </Link>
-            <Image
-              src="/hero-desktop.png"
-              width={1000}
-              height={760}
-              className="hidden md:block"
-              alt="Screenshots of the dashboard project showing desktop version"
-            />
-            <div className="bg-[#F0F8FF] p-4 dark:bg-[#F0F8FF]">
-              <h3 className="font-bold text-xl">Groot Figurine</h3>
-              <p className="text-sm text-[#87CEEB]">Detailed and collectible</p>
-              <h4 className="font-semibold text-lg md:text-xl">$34.99</h4>
-            </div>
-          </div>
+
+      <section className="w-full md:py-24 lg:py-32 bg-gray-50">
+        <h2 className="text-center text-3xl mb-3 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-6">
+          <Card name="Buzz" image="/img/buzz.png" description="Muñeco que dispara fuegos" price="$ 200.000"/>
+          <Card name="Woody" image="/img/woody.png" description="Muñeco que dispara fuegos" price="$ 200.000"/>
+          <Card name="Lotzo" image="/img/buzz.png" description="Muñeco que dispara fuegos" price="$ 200.000"/>
         </div>
       </section>
+
+
       <section className="w-full py-12 md:py-24 lg:py-32 bg-[#F0F8FF] dark:bg-[#F0F8FF]">
         <div className=" grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
           <div className="space-y-3">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Why Choose Our Store?</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">¿Por que elegirnos?</h2>
             <p className="mx-auto max-w-[700px] text-[#87CEEB] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-[#87CEEB]">
-              We pride ourselves on offering the highest quality movie merchandise, fast shipping, and a satisfaction
-              guarantee.
+              Le proveemos la mejor experiencia de compra para que puedas ser el protagonista de tus pelúculas favoritas
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-[#F0F8FF] p-6 rounded-lg shadow-lg dark:bg-[#F0F8FF]">
-              <h3 className="text-xl font-bold mt-4">High-Quality Products</h3>
+              <h3 className="text-xl font-bold mt-4">Productos de calidad</h3>
               <p className="text-[#87CEEB] dark:text-[#87CEEB] mt-2">
-                Our merchandise is made with the utmost care and attention to detail, ensuring a long-lasting and
-                enjoyable experience.
+               Nuestro equipo de expertos en tecnología de punta te brinda la mejor experiencia de compra para que puedas ser el protagonista de tus pelúculas favoritas
               </p>
             </div>
             <div className="bg-[#F0F8FF] p-6 rounded-lg shadow-lg dark:bg-[#F0F8FF]">

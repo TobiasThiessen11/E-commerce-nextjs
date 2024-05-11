@@ -6,7 +6,7 @@ export default function Home() {
   return (
    <div >
         <section className="w-full py-6 md:py-24 lg:py-32 xl:py-20">
-          <div className="md:px-5">
+          <div className="md:px-16">
             <div className="grid gap-6 md:grid-cols-2 lg:gap-2 items-center">
             <div className="md:order-1 flex justify-center ">
               <Image

@@ -24,7 +24,7 @@ const Card: React.FC<CardProps> = ({ name, image, description, price }) => {
       />
       <div className="bg-[#F0F8FF] p-4 dark:bg-[#F0F8FF]">
         <h3 className="font-bold text-xl">{name}</h3>
-        <p className="text-sm text-[#87CEEB]">{description}</p>
+        <p className="text-l font-semibold text-secondary">{description}</p>
         <h4 className="font-semibold text-lg md:text-xl">{price}</h4>
       </div>
     </div>

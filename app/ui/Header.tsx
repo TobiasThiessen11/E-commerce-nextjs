@@ -6,7 +6,7 @@ import Image from 'next/image'
 export const Header = () => {
   return (
   <>
-    <div className='h-6 text-xs justify-center pt-1 text-center bg-secondary text-white'>Inicia sesion y consegui un descuento del 20% en tu primera orden</div>
+    <div className='h-6 text-xs lg:text-xl lg:h-9 justify-center pt-1 text-center bg-secondary text-white'>Inicia sesion y consegui un descuento del 20% en tu primera orden</div>
     <header className='flex items-center sticky top-0 z-50 justify-between bg-white'>
     <Link href={"/"} className='m-2 mt-3 pl-4 text-black text-3xl font-bold'>Movie Merch</Link>
     <nav className='gap-6 items-center hidden text-black font-semibold lg:flex '>

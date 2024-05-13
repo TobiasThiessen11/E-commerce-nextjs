@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({ name, image, description, price }) => {
         src={image}
         width={800}
         height={560}
-        className="hidden md:block"
+        className=" md:block"
         alt={description}
       />
       <div className="bg-[#F0F8FF] p-4 dark:bg-[#F0F8FF]">

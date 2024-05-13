@@ -7,7 +7,7 @@ export default function Home() {
    <div >
       <section className="w-auto h-full">
         <div className="relative lg:p-28 lg:h-full">
-          <div className="hidden lg:flex lg:mt-52 xl:mt-72 ">
+          <div className=" h-72 w-auto lg:flex xl:mt-22 xl:h-30 p-10">
             <Image
               src="/img/home.png"
               layout="fill"
@@ -16,15 +16,15 @@ export default function Home() {
               className=""
             />
           </div>
-          <div className="relative flex flex-col items-start justify-center text-white px-6  md:px-0 md:w-1/2">
-            <h1 className="text-s sm:text-l md:text-l lg:text-xl bg-info px-2 py-1 rounded">Ultimas Novedades</h1>
+          <div className="relative flex flex-col items-start justify-center text-white px-6 pb-4 md:px-0 lg:py-0 md:w-1/2">
+            <h1 className="text-s sm:text-l md:text-l lg:text-xl bg-info px-2 rounded">Ultimas Novedades</h1>
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">Exclusivos de WALL·E</h1>
             <p className="max-w-lg text-lg">
               Los mejores muñecos de la pelicula WALL·E. Con la compra de uno te llevas de regalo un poster.
             </p>
             <div className="">
               <Link
-                href="#"
+                href="/WALL·E"
                 className="inline-block px-8 py-2 text-2xl mt-2 font-semibold bg-black rounded-md hover:bg-primary-dark">
                 Comprar
               </Link>

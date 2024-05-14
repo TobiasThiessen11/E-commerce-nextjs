@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import Card from "./ui/Card";
+import NewsCard from "./ui/NewsCard";
+import MovieCard from "./ui/MovieCard";
+
 
 export default function Home() {
   return (
@@ -36,10 +39,33 @@ export default function Home() {
 
       <section className="w-full md:py-24 py-5 lg:py-10 bg-gray-50">
         <h2 className="text-center text-3xl mb-3 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-4 lg:md:px-10 md:px-40">
           <Card name="Buzz" image="/img/Stitch.png" description="Stitch attacks snacks! Next on his list? A Mickey Mouse Lollipop. " price="$ 20.000"/>
           <Card name="Woody" image="/img/woody.png" description="Muñeco que dispara fuegos" price="$ 60.340"/>
           <Card name="BD-1" image="/img/BD-1.png" description="BD-1 Interactive Remote Control Droid" price="$ 100.540"/>
+          <Card name="Rapunzel" image="/img/rapunzel.png" description="Muñeca de rapunzel" price="$ 50.540"/>
+        </div>
+      </section>
+
+      <section className=" ">
+        <h1 className="text-center w-full text-3xl m-2 font-bold sm:text-4xl md:text-5xl">Novedades</h1>
+        <div className="flex items-center justify-center">
+          <NewsCard image="/img/new1.png" title="Lo mas buscado" />
+          <NewsCard image="/img/new2.png" title="Las nuevas peliculas de este 2024" />
+        </div>
+      </section>
+
+      <section className="py-12 w-full ">
+        <h1 className="text-center text-2xl mb-6 font-bold sm:text-4xl md:text-5xl">Encontra tus personajes favoritos</h1>
+        <div className="max-w-6xl mx-auto px-4 sm:px-1 lg:px-1">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+              <MovieCard image="/movies/cars.png" title="Cars"/>
+              <MovieCard image="/movies/increibles.png" title="Los Increibles"/>
+              <MovieCard image="/movies/lilo.png" title="Lilo & Stitch"/>
+              <MovieCard image="/movies/mounster-inc.png" title="Monster Inc"/>
+              <MovieCard image="/movies/nemo.png" title="Buscando a Nemo"/>
+              <MovieCard image="/movies/shrek.png" title="Shrek"/>
+          </div>
         </div>
       </section>
 
@@ -74,6 +100,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
    </div>
   )
 }

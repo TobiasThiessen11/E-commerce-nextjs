@@ -3,7 +3,76 @@ import Link from "next/link";
 import Card from "./ui/Card";
 import NewsCard from "./ui/NewsCard";
 import MovieCard from "./ui/MovieCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
+const products = [
+  {
+    name: 'Rapunzel',
+    image: '/img/rapunzel.png',
+    description: 'Muñeca de Rapunzel',
+    price: '$20.310'
+  },
+  {
+    name: 'BD-1',
+    image: '/img/BD-1.png',
+    description: 'Muñeco de BD-1',
+    price: '$150.540'
+  },
+  {
+    name: 'Stitch',
+    image: '/img/Stitch.png',
+    description: 'Muñeco de Stitch',
+    price: '$50.540'
+  },
+  {
+    name: 'Woody',
+    image: '/img/woody.png',
+    description: 'Muñeco de Woody',
+    price: '$30.540'
+  },
+  {
+    name: 'WALL·E',
+    image: '/img/buzz.png',
+    description: 'Poster de WALL·E',
+    price: '$50.540'
+  },
+  {
+    name: 'Rapunzel',
+    image: '/img/rapunzel.png',
+    description: 'Muñeca de Rapunzel',
+    price: '$20.310'
+  },
+  {
+    name: 'BD-1',
+    image: '/img/BD-1.png',
+    description: 'Muñeco de BD-1',
+    price: '$150.540'
+  },
+  {
+    name: 'Stitch',
+    image: '/img/Stitch.png',
+    description: 'Muñeco de Stitch',
+    price: '$50.540'
+  },
+  {
+    name: 'Woody',
+    image: '/img/woody.png',
+    description: 'Muñeco de Woody',
+    price: '$30.540'
+  },
+  {
+    name: 'WALL·E',
+    image: '/img/buzz.png',
+    description: 'Poster de WALL·E',
+    price: '$50.540'
+  },
+];
 
 export default function Home() {
   return (
@@ -36,15 +105,21 @@ export default function Home() {
         </div>
       </section>
 
-
-      <section className=" md:py-24 py-5 lg:py-10 bg-gray-50">
-        <h2 className="text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-4 lg:md:px-40 md:px-50">
-          <Card name="Buzz" image="/img/Stitch.png" description="Stitch attacks snacks! Next on his list? A Mickey Mouse Lollipop. " price="$ 20.000"/>
-          <Card name="Woody" image="/img/woody.png" description="Muñeco que dispara fuegos" price="$ 60.340"/>
-          <Card name="BD-1" image="/img/BD-1.png" description="BD-1 Interactive Remote Control Droid" price="$ 100.540"/>
-          <Card name="Rapunzel" image="/img/rapunzel.png" description="Muñeca de rapunzel" price="$ 50.540"/>
-        </div>
+      <section className="h-full md:py-24 py-5 lg:py-10 bg-gray-50 max-w-6xl mx-auto">
+          <Carousel className="w-full ">
+          <h2 className="text-center text-3xl mb-4 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
+          <CarouselContent className=" mb-2">
+            {products.map((product, index) => (
+              <CarouselItem key={index} className=" md:basis-1/3 lg:basis-1/4">
+                <div className="p-2">
+                  <Card name={product.name} image={product.image} description={product.description} price={product.price}/>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </section>
 
       <section className=" ">

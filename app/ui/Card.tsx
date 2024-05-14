@@ -11,22 +11,21 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ name, image, description, price }) => {
   return (
-    <div className="relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2 cursor-pointer bg-neutral">
-      <Link href="#">
-        <span className="sr-only">View Product</span>
-      </Link>
+    <div className="relative rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2 cursor-pointer bg-neutral">
+      <Link href={`/products/${name}`}>
       <Image
         src={image}
         width={800}
         height={560}
-        className=" md:block"
+        className="md:block"
         alt={description}
       />
-      <div className="bg-[#F0F8FF] p-4 dark:bg-[#F0F8FF]">
+      <div className="bg-white p-4 h-36 rounded-b-lg dark:bg-[#F0F8FF]">
         <h3 className="font-bold text-xl">{name}</h3>
         <p className="text-l font-semibold text-secondary">{description}</p>
         <h4 className="font-semibold text-lg md:text-xl">{price}</h4>
       </div>
+      </Link>
     </div>
   );
 };

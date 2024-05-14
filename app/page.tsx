@@ -37,9 +37,9 @@ export default function Home() {
       </section>
 
 
-      <section className="w-full md:py-24 py-5 lg:py-10 bg-gray-50">
-        <h2 className="text-center text-3xl mb-3 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-4 lg:md:px-10 md:px-40">
+      <section className=" md:py-24 py-5 lg:py-10 bg-gray-50">
+        <h2 className="text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-4 lg:md:px-40 md:px-50">
           <Card name="Buzz" image="/img/Stitch.png" description="Stitch attacks snacks! Next on his list? A Mickey Mouse Lollipop. " price="$ 20.000"/>
           <Card name="Woody" image="/img/woody.png" description="Muñeco que dispara fuegos" price="$ 60.340"/>
           <Card name="BD-1" image="/img/BD-1.png" description="BD-1 Interactive Remote Control Droid" price="$ 100.540"/>

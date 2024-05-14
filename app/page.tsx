@@ -105,7 +105,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="h-full md:py-24 py-5 lg:py-10 bg-gray-50 max-w-6xl mx-auto">
+      <section className="h-full md:py-24 py-5 bg-white lg:py-10 max-w-6xl mx-auto">
           <Carousel className="w-full ">
           <h2 className="text-center text-3xl mb-4 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
           <CarouselContent className=" mb-2">

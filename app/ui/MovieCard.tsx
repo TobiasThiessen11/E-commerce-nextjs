@@ -21,6 +21,7 @@ const NewsCard: React.FC<MovieCardProps> = ({ image,title}) => {
             
         />
         <h1 className='text-s text-center lg:text-xl lg:font-semibold'>{title}</h1>
+        
       </Link>
     </div>
   )

@@ -19,7 +19,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ image,title}) => {
             height={560} 
             className='h-full cursor-pointer hover:scale-105 lg:mb-3 transition-transform duration-300 ease-in-out' 
         />
-        <h1 className='text-s text-center lg:text-xl lg:font-semibold'>{title}</h1>
+        <h1 className='text-xs text-center lg:text-xl lg:font-semibold'>{title}</h1>
         </Link>
     </div>
     

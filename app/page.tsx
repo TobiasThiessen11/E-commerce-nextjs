@@ -79,7 +79,7 @@ export default function Home() {
    <div >
       <section className="w-auto h-full">
         <div className="relative lg:p-28 lg:h-full">
-          <div className=" h-72 w-auto lg:flex xl:mt-22 xl:h-30 p-10">
+          <div className="h-72 w-auto lg:mt-42 xl:mt-42 xl:h-30 p-10">
             <Image
               src="/img/home.png"
               layout="fill"
@@ -106,7 +106,7 @@ export default function Home() {
       </section>
 
       <section className="h-full md:py-24 py-5 bg-white lg:py-10 max-w-6xl mx-auto">
-          <Carousel className="w-full ">
+          <Carousel className="w-full " >
           <h2 className="text-center text-3xl mb-4 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
           <CarouselContent className=" mb-2">
             {products.map((product, index) => (

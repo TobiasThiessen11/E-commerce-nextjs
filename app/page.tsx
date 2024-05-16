@@ -3,6 +3,7 @@ import Link from "next/link";
 import Card from "./ui/Card";
 import NewsCard from "./ui/NewsCard";
 import MovieCard from "./ui/MovieCard";
+import MoviesCarousel from "./ui/MoviesCarousel";
 import {
   Carousel,
   CarouselContent,
@@ -15,7 +16,7 @@ const products = [
   {
     name: 'Rapunzel',
     image: '/img/rapunzel.png',
-    description: 'Muñeca de Rapunzel',
+    description: 'Muñeca de Rapunzel ',
     price: '$20.310'
   },
   {
@@ -143,6 +144,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <MoviesCarousel/>
 
 
       <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary">

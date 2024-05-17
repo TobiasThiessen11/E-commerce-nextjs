@@ -6,7 +6,7 @@ const products = [
     {
       movie: 'La Era del Hielo 3',
       image: '/img/laEraDelHielo.jpg',
-      description: 'La Era de Hielo es una película de animación de Disney. Es la primera película animada de Walt Disney Animation Studios, que se estrenó en 1991. ',
+      description: 'La Era de Hielo es una película de animación clave. Esta pelicula fue desarrollada por el estudio de animacion de DreamWorks Animation. ',
       videoTrailer: 'https://www.youtube.com/watch?v=wHhCZCdKZk8&ab_channel=20thCenturyStudiosHomeEntertainmentEspa%C3%B1a'
     },
     {
@@ -21,7 +21,7 @@ export const MoviesCarousel = () => {
   return (
     <div className='bg-black text-white'>
         <Carousel className="w-full " >
-        <h2 className="text-center text-3xl mb-4 py-5 tracking-tighter sm:text-4xl md:text-5xl">Películas en Cine</h2>
+        <h2 className="text-center text-5xl mb-4 py-2 tracking-tighter sm:text-4xl md:text-5xl">Películas en Cine</h2>
         <CarouselContent className=" mb-2">
         {products.map((product, index) => (
             <CarouselItem key={index} className=" md:basis-1/1 lg:basis-1/1">

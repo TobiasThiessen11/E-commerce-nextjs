@@ -21,7 +21,7 @@ export const Header = () => {
           Movie Merch
         </Link>
         <nav className='gap-6 items-center hidden text-black font-semibold lg:flex'>
-          <Link href={"/"}>Productos</Link>
+          <Link href={"/products"}>Productos</Link>
           <Link href={"/about"}>Oferta</Link>
           <Link href={"/contact"}>Nuevos Arrivos</Link>
           <div className='flex h-10 lg:ml-auto max-lg:w-full'>

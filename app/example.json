@@ -2,7 +2,7 @@
     {
       "name": "Rapunzel",
       "image": "/img/rapunzel.png",
-      "description": "Muñeca de Rapunzel",
+      "description": "Muñeca de Trapo Rapunzel",
       "price": "$20.310",
       "id": 1
     },
@@ -49,10 +49,10 @@
       "id": 1
     },
     {
-      "name": "Stitch",
-      "image": "/img/Stitch.png",
-      "description": "Muñeco de Stitch",
-      "price": "$50.540",
+      "name": "Wall-E",
+      "image": "/img/peluche-walle.png",
+      "description": "Peluche super suavecito de walle",
+      "price": "$29.000",
       "id": 1
     },
     {

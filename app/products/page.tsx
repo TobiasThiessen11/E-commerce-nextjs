@@ -3,7 +3,7 @@ import Filter from './ui/Filter'
 import Card from '../ui/Card'
 import json from '../example.json'
 
-export const Products = () => {
+export default function Products () {
   return (
     <div>
         <h1 className='text-6xl font-bold text-center mb-5' >Productos</h1>
@@ -26,4 +26,3 @@ export const Products = () => {
   )
 }
 
-export default Products

@@ -4,15 +4,15 @@ import React from 'react'
 
 export const Filter = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-8 p-4 md:p-8">
-        <div className="bg-white rounded-lg shadow-xl p-6 w-full md:w-64 space-y-6">
-            <h2 className="text-lg font-semibold">Filters</h2>
+    <div className="flex flex-col md:flex-row gap-8  md:p-5  ">
+        <div className="bg-neutral rounded-lg shadow-xl p-6 md:w-64 space-y-6">
+            <h2 className="text-2xl font-semibold">Filtros</h2>
             <div>
-                <h3 className="text-sm font-medium mb-2">Category</h3>
+                <h3 className="text-sm font-medium mb-2">Categoria</h3>
                 <div className="space-y-2">
                 <label className="flex items-center gap-2">
-                    <Checkbox id="category-all" defaultChecked />
-                    <span>All</span>
+                    <Checkbox id="category-all"  />
+                    <span>Todos</span>
                 </label>
                 <label className="flex items-center gap-2">
                     <Checkbox id="category-electronics" />

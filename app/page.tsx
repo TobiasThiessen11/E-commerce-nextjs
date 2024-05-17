@@ -4,6 +4,7 @@ import Card from "./ui/Card";
 import NewsCard from "./ui/NewsCard";
 import MovieCard from "./ui/MovieCard";
 import MoviesCarousel from "./ui/MoviesCarousel";
+import json from "./example.json"
 import {
   Carousel,
   CarouselContent,
@@ -12,68 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-const products = [
-  {
-    name: 'Rapunzel',
-    image: '/img/rapunzel.png',
-    description: 'Muñeca de Rapunzel ',
-    price: '$20.310'
-  },
-  {
-    name: 'BD-1',
-    image: '/img/BD-1.png',
-    description: 'Muñeco de BD-1',
-    price: '$150.540'
-  },
-  {
-    name: 'Stitch',
-    image: '/img/Stitch.png',
-    description: 'Muñeco de Stitch',
-    price: '$50.540'
-  },
-  {
-    name: 'Woody',
-    image: '/img/woody.png',
-    description: 'Muñeco de Woody',
-    price: '$30.540'
-  },
-  {
-    name: 'WALL·E',
-    image: '/img/buzz.png',
-    description: 'Poster de WALL·E',
-    price: '$50.540'
-  },
-  {
-    name: 'Rapunzel',
-    image: '/img/rapunzel.png',
-    description: 'Muñeca de Rapunzel',
-    price: '$20.310'
-  },
-  {
-    name: 'BD-1',
-    image: '/img/BD-1.png',
-    description: 'Muñeco de BD-1',
-    price: '$150.540'
-  },
-  {
-    name: 'Stitch',
-    image: '/img/Stitch.png',
-    description: 'Muñeco de Stitch',
-    price: '$50.540'
-  },
-  {
-    name: 'Woody',
-    image: '/img/woody.png',
-    description: 'Muñeco de Woody',
-    price: '$30.540'
-  },
-  {
-    name: 'WALL·E',
-    image: '/img/buzz.png',
-    description: 'Poster de WALL·E',
-    price: '$50.540'
-  },
-];
+
 
 export default function Home() {
   return (
@@ -110,7 +50,7 @@ export default function Home() {
           <Carousel className="w-full " >
           <h2 className="text-center text-3xl mb-4 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
           <CarouselContent className=" mb-2">
-            {products.map((product, index) => (
+            {json.map((product, index) => (
               <CarouselItem key={index} className=" md:basis-1/3 lg:basis-1/4">
                 <div className="p-2">
                   <Card name={product.name} image={product.image} description={product.description} price={product.price}/>

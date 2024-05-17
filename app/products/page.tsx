@@ -11,7 +11,7 @@ export const page = () => {
                 <Filter />
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-5">
                 {json.map((product) => (
-                    <Card name={product.name} image={product.image} description={product.description} price={product.price}/>
+                    <Card key={product.id} name={product.name} image={product.image} description={product.description} price={product.price}/>
                 ))}
             </div>
             

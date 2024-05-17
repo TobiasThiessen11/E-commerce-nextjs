@@ -50,10 +50,10 @@ export default function Home() {
           <Carousel className="w-full " >
           <h2 className="text-center text-3xl mb-4 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
           <CarouselContent className=" mb-2">
-            {json.map((product, index) => (
-              <CarouselItem key={index} className=" md:basis-1/3 lg:basis-1/4">
+            {json.map((product) => (
+              <CarouselItem key={product.id} className=" md:basis-1/3 lg:basis-1/4">
                 <div className="p-2">
-                  <Card name={product.name} image={product.image} description={product.description} price={product.price}/>
+                  <Card key={product.id} name={product.name} image={product.image} description={product.description} price={product.price}/>
                 </div>
               </CarouselItem>
             ))}

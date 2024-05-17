@@ -3,73 +3,85 @@
       "name": "Rapunzel",
       "image": "/img/rapunzel.png",
       "description": "Muñeca de Rapunzel",
-      "price": "$20.310"
+      "price": "$20.310",
+      "id": 1
     },
     {
       "name": "BD-1",
       "image": "/img/BD-1.png",
       "description": "Muñeco de BD-1",
-      "price": "$150.540"
+      "price": "$150.540",
+      "id": 1
     },
     {
       "name": "Stitch",
       "image": "/img/Stitch.png",
       "description": "Muñeco de Stitch",
-      "price": "$50.540"
+      "price": "$50.540",
+      "id": 1
     },
     {
       "name": "Woody",
       "image": "/img/woody.png",
       "description": "Muñeco de Woody",
-      "price": "$30.540"
+      "price": "$30.540",
+      "id": 1
     },
     {
       "name": "WALL·E",
       "image": "/img/buzz.png",
       "description": "Poster de WALL·E",
-      "price": "$50.540"
+      "price": "$50.540",
+      "id": 1
     },
     {
       "name": "Rapunzel",
       "image": "/img/rapunzel.png",
       "description": "Muñeca de Rapunzel",
-      "price": "$20.310"
+      "price": "$20.310",
+      "id": 1
     },
     {
       "name": "BD-1",
       "image": "/img/BD-1.png",
       "description": "Muñeco de BD-1",
-      "price": "$150.540"
+      "price": "$150.540",
+      "id": 1
     },
     {
       "name": "Stitch",
       "image": "/img/Stitch.png",
       "description": "Muñeco de Stitch",
-      "price": "$50.540"
+      "price": "$50.540",
+      "id": 1
     },
     {
       "name": "Woody",
       "image": "/img/woody.png",
       "description": "Muñeco de Woody",
-      "price": "$30.540"
+      "price": "$30.540",
+      "id": 1
     },
     {
       "name": "WALL·E",
       "image": "/img/buzz.png",
       "description": "Poster de WALL·E",
-      "price": "$50.540"
+      "price": "$50.540",
+      "id": 1
     },
     {
       "name": "Woody",
       "image": "/img/woody.png",
       "description": "Muñeco de Woody",
-      "price": "$30.540"
+      "price": "$30.540",
+      "id": 1
     },
     {
       "name": "WALL·E",
       "image": "/img/buzz.png",
       "description": "Poster de WALL·E",
-      "price": "$50.540"
+      "price": "$50.540",
+      "id": 1
     }
   ]
   

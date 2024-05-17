@@ -11,19 +11,19 @@ export const Filter = () => {
                 <h3 className="text-sm font-medium mb-2">Categoria</h3>
                 <div className="space-y-2">
                 <label className="flex items-center gap-2">
-                    <Checkbox id="category-all"  />
+                    <Checkbox id="category-clothing" className='border-2 border-black' />
                     <span>Todos</span>
                 </label>
                 <label className="flex items-center gap-2">
-                    <Checkbox id="category-electronics" />
+                    <Checkbox id="category-clothing" className='border-2 border-black' />
                     <span>Electronics</span>
                 </label>
                 <label className="flex items-center gap-2">
-                    <Checkbox id="category-clothing" />
+                    <Checkbox id="category-clothing" className='border-2 border-black' />
                     <span>Clothing</span>
                 </label>
                 <label className="flex items-center gap-2">
-                    <Checkbox id="category-home" />
+                    <Checkbox id="category-clothing" className='border-2 border-black' />
                     <span>Home</span>
                 </label>
                 </div>

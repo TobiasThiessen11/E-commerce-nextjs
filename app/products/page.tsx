@@ -2,11 +2,13 @@ import React from 'react'
 import Filter from './ui/Filter'
 import Card from '../ui/Card'
 import json from '../example.json'
+import Banner from './ui/Banner'
 
 export default function Products () {
   return (
     <div>
-        <h1 className='text-6xl font-bold text-center mb-5' >Productos</h1>
+
+            <Banner image="/img/banner.png" title="Clasicos" description="Hasta un -40%"/>
             <div className='md:flex'>
                 <Filter />
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-5">

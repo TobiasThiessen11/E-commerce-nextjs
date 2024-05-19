@@ -4,7 +4,7 @@ import React from 'react'
 
 export const Filter = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-8  md:p-5  ">
+    <div className="md:flex flex-col hidden md:flex-row gap-8  md:p-5  ">
         <div className="bg-neutral rounded-lg shadow-xl p-6 md:w-64 space-y-6">
             <h2 className="text-2xl font-semibold">Filtros</h2>
             <div>

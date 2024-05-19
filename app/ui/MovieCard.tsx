@@ -5,7 +5,7 @@ import Link from 'next/link'
 interface MovieCardProps {
     title: string;
     image: string;
-  }
+}
   
 
 const NewsCard: React.FC<MovieCardProps> = ({ image,title}) => {

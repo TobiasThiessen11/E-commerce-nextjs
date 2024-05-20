@@ -20,6 +20,7 @@ interface Movie {
   overview: string;
   videoTrailer: string;
   release_date: string;
+  genre_ids: number[];
 }
 
 interface MovieData {
@@ -38,7 +39,10 @@ export const MoviesCarousel = () => {
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
-        const firstFiveMovies = json.results.slice(0, 5).map((movie: Movie) => ({
+        if (json.results && Array.isArray(json.results)){}
+        const AnimatedMovies = json.results.filter((movie: Movie) => movie.genre_ids.includes(16));
+
+        const firstFiveMovies = AnimatedMovies.slice(0, 5).map((movie: Movie) => ({
           movie: movie.title,
           image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
           description: movie.overview,
@@ -51,9 +55,9 @@ export const MoviesCarousel = () => {
   }, []);
 
   return (
-    <div className='bg-black text-white'>
+    <div className='bg-gray-800 text-white'>
       <Carousel className="w-full">
-        <h2 className="text-center text-5xl mb-4 py-2 tracking-tighter sm:text-4xl md:text-5xl">Películas en Cine</h2>
+        <h2 className="text-center text-5xl mb-4 py-2 tracking-tighter sm:text-4xl md:text-5xl">Películas Animadas en Cine</h2>
         <CarouselContent className="mb-2">
           {movies.map((movie, index) => (
             <CarouselItem key={index} className="md:basis-1/1 lg:basis-1/1">

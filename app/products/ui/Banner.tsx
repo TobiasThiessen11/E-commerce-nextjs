@@ -12,8 +12,8 @@ interface Banner {
 
 const Banner: React.FC<Banner> = ({image,title,description}) => {
   return (
-    <div className='md:flex'>
-    <div className='md:w-2/3 bg-neutral p-5 flex justify-center items-center'>
+    <div className='md:flex '>
+    <div className='md:w-2/3 bg-neutral p-5 flex justify-center items-center '>
         <div className='text-center'>
             <h1 className='text-5xl font-bold'>{title}</h1>
             <h3>{description}</h3>

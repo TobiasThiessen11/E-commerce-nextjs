@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { TextRevealCard, TextRevealCardDescription, TextRevealCardTitle } from "./ui/text-reveal-card";
 
 
 
@@ -87,6 +88,24 @@ export default function Home() {
 
       <MoviesCarousel/>
 
+      <section className="hidden lg:block w-full bg-black ">
+      <h1 className="text-center text-white text-5xl mb-4 py-2 tracking-tighter sm:text-4xl md:text-5xl">Para, no te vayas...</h1>
+        <div className="flex shadow-xl items-center justify-center  pt-7">
+          <TextRevealCard
+            text="Raspa aqui y veras..."
+            revealText="C0D1G0 NEM0"
+            className=" text-3xl sm:text-2xl md:text-3xl lg:text-5xl mb-20"
+          >
+            <TextRevealCardTitle className="text-3xl sm:text-2xl md:text-3xl lg:text-5xl">
+              Tenemos una sorpresa para ti
+            </TextRevealCardTitle>
+            <TextRevealCardDescription>
+              Rasca aqui para obtener un beneficio exlusivo.
+            </TextRevealCardDescription>
+          </TextRevealCard>
+        </div>
+      </section>
+
 
       <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
         <div className=" grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
@@ -118,6 +137,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
 
    </div>
   )

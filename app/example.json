@@ -23,12 +23,12 @@
     {
       "name": "Woody",
       "image": "/img/woody.png",
-      "description": "Muñeco de Woody (tengo una serpiente en mi bota)",
+      "description": "Muñeco de Woody(tengo una serpiente en mi bota)",
       "price": "$30.540",
       "id": 4
     },
     {
-      "name": "WALL·E",
+      "name": "Buzz Lightyear",
       "image": "/img/buzz.png",
       "description": "Poster de WALL·E",
       "price": "$50.540",
@@ -63,7 +63,7 @@
       "id": 9
     },
     {
-      "name": "WALL·E",
+      "name": "Buzz Lightyear",
       "image": "/img/buzz.png",
       "description": "Poster de WALL·E",
       "price": "$50.540",

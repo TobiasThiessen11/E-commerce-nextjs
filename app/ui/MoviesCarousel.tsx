@@ -46,7 +46,6 @@ export const MoviesCarousel = () => {
           releaseDate: movie.release_date
         }));
         setMovies(firstFiveMovies);
-        console.log(firstFiveMovies);
       })
       .catch((err) => console.error('error:' + err));
   }, []);

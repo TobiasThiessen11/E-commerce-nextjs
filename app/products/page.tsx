@@ -11,7 +11,7 @@ export default function Products () {
             <Banner image="/img/banner.png" title="Clasicos" description="Hasta un -40%"/>
             <div className='md:flex'>
                 <Filter />
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 m-5">
                 {json.map((product) => (
                     <Card key={product.id} name={product.name} image={product.image} description={product.description} price={product.price}/>
                 ))}

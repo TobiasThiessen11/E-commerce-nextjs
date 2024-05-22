@@ -56,10 +56,10 @@
       "id": 8
     },
     {
-      "name": "Woody",
-      "image": "/img/woody.png",
-      "description": "Muñeco de Woody",
-      "price": "$30.540",
+      "name": "Nave Lego Star Wars",
+      "image": "/img/lego-star-wars.png",
+      "description": "Nave super epica",
+      "price": "$74.999",
       "id": 9
     },
     {

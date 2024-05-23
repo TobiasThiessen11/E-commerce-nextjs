@@ -13,17 +13,19 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { TextRevealCard, TextRevealCardDescription, TextRevealCardTitle } from "./ui/text-reveal-card";
+import { getImages, getImagesByTag } from "@/lib/images";
 
 
 
 export default function Home() {
+  getImagesByTag("MovieMerch/lego-starwars_butepj")
   return (
    <div >
       <section className="w-auto h-full">
         <div className="relative lg:p-28 lg:h-full">
           <div className="h-72 w-auto lg:mt-42 xl:mt-42 xl:h-30 p-10">
             <Image
-              src="/img/home.png"
+              src="https://res.cloudinary.com/dt1dczvkq/image/upload/v1716386360/MovieMerch/lego-starwars_butepj.png"
               layout="fill"
               objectFit="cover"
               alt="Background Image of WALL·E"

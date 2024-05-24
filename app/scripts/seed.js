@@ -7,7 +7,7 @@ const {
   movies,
   sales,
   salesDetails,
-} = require('../app/lib/placeholder-data.js');
+} = require('../lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
 async function seedUsers(client) {
@@ -33,7 +33,7 @@ async function seedUsers(client) {
         return client.sql`
         INSERT INTO users (u_id, name, lastname, email, password)
         VALUES (${user.u_id}, ${user.name}, ${user.lastname}, ${user.email}, ${hashedPassword})
-        ON CONFLICT (id) DO NOTHING;
+        ON CONFLICT (u_id) DO NOTHING;
       `;
       }),
     );
@@ -57,14 +57,16 @@ async function seedProducts(client) {
     // Create the "products" table if it doesn't exist
     const createTable = await client.sql`
     CREATE TABLE IF NOT EXISTS products (
-    p_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
-    description TEXT NOT NULL,
-    state BIT NOT NULL,
-    movie_id UUID NOT NULL FOREIGN KEY REFERENCES movies(m_id),
-    category_id UUID NOT NULL FOREIGN KEY REFERENCES categories(c_id),
-  );
+      p_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      price DECIMAL(10,2) NOT NULL,
+      description TEXT NOT NULL,
+      state BIT NOT NULL,
+      movie_id UUID NOT NULL,
+      category_id UUID NOT NULL,
+      FOREIGN KEY (movie_id) REFERENCES movies(m_id),
+      FOREIGN KEY (category_id) REFERENCES categories(c_id)
+    );
 `;
 
     console.log(`Created "products" table`);
@@ -75,7 +77,7 @@ async function seedProducts(client) {
         (product) => client.sql`
         INSERT INTO products (p_id, name, price, description, state, movie_ID, category_ID)
         VALUES (${product.p_id}, ${product.name}, ${product.price}, ${product.description}, ${product.state}, ${product.movie_ID}, ${product.category_ID})
-        ON CONFLICT (id) DO NOTHING;
+        ON CONFLICT (p_id) DO NOTHING;
       `,
       ),
     );
@@ -100,9 +102,10 @@ async function seedProductsImages(client) {
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS productsImages (
         pi_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        product_id UUID NOT NULL FOREIGN KEY REFERENCES products(p_id),
-        asset_id VARCHAR(255) NOT NULL,     --------TODO----------
-        image_url VARCHAR(255) NOT NULL     --------TODO----------
+        product_id UUID NOT NULL,
+        asset_id VARCHAR(255) NOT NULL,  
+        image_url VARCHAR(255) NOT NULL, 
+        FOREIGN KEY (product_id) REFERENCES products(p_id) 
       );
     `;
 
@@ -114,7 +117,7 @@ async function seedProductsImages(client) {
         (productImages) => client.sql`
         INSERT INTO productsImages (pi_id, product_id, asset_id, image_url)
         VALUES (${productImages.pi_id}, ${productImages.product_id}, ${productImages.asset_id}, ${productImages.image_url})
-        ON CONFLICT (id) DO NOTHING;
+        ON CONFLICT (pi_id) DO NOTHING;
       `,
       ),
     );
@@ -149,7 +152,7 @@ async function seedMovies(client) {
         (movie) => client.sql`
         INSERT INTO movies (m_id, name)
         VALUES (${movie.m_id}, ${movie.name})
-        ON CONFLICT (month) DO NOTHING;
+        ON CONFLICT (m_id) DO NOTHING;
       `,
       ),
     );
@@ -185,7 +188,7 @@ async function seedCategories(client) {
         (category) => client.sql`
         INSERT INTO categories (c_id, name, description)
         VALUES (${category.c_id}, ${category.name}, ${category.description})
-        ON CONFLICT (month) DO NOTHING;
+        ON CONFLICT (c_id) DO NOTHING;
       `,
       ),
     );
@@ -222,7 +225,7 @@ async function seedSales(client) {
         (sale) => client.sql`
         INSERT INTO sales (s_id, date, transaction_mp_id, person_email)
         VALUES (${sale.s_id}, ${sale.date}, ${sale.transaction_mp_id}, ${sale.person_email})
-        ON CONFLICT (month) DO NOTHING;
+        ON CONFLICT (s_id) DO NOTHING;
       `,
       ),
     );
@@ -248,8 +251,10 @@ async function seedSalesDetails(client) {
         price DECIMAL(10,2) NOT NULL,
         quantity INTEGER NOT NULL,
         subtotal DECIMAL(10,2) NOT NULL,
-        sale_id UUID NOT NULL FOREIGN KEY REFERENCES sales(s_id),
-        product_id UUID NOT NULL FOREIGN KEY REFERENCES products(p_id),    
+        sale_id UUID NOT NULL,
+        product_id UUID NOT NULL,  
+        FOREIGN KEY (sale_id) REFERENCES sales(s_id), 
+        FOREIGN KEY (product_id) REFERENCES products(p_id)
       );
     `;
 
@@ -261,7 +266,7 @@ async function seedSalesDetails(client) {
         (saleDetail) => client.sql`
         INSERT INTO sales (sd_id, price, quantity, subtotal, sale_id, product_id)
         VALUES (${saleDetail.sd_id}, ${saleDetail.price}, ${saleDetail.quantity}, ${saleDetail.subtotal}, ${saleDetail.sale_id}, ${saleDetail.product_id})
-        ON CONFLICT (month) DO NOTHING;
+        ON CONFLICT (sd_id) DO NOTHING;
       `,
       ),
     );
@@ -282,10 +287,10 @@ async function main() {
   const client = await db.connect();
 
   await seedUsers(client);
-  await seedProducts(client);
+  await seedMovies(client); 
+  await seedCategories(client); 
+  await seedProducts(client); 
   await seedProductsImages(client);
-  await seedMovies(client);
-  await seedCategories(client);
   await seedSales(client);
   await seedSalesDetails(client);
 

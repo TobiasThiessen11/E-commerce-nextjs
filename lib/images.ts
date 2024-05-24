@@ -7,6 +7,7 @@ cloudinary.config({
 })
 export async function getImages() {
     const results = await cloudinary.api.resources();
+    console.log(results);
     return results
 }
 

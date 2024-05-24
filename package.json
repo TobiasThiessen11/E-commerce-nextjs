@@ -7,16 +7,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node -r dotenv/config ./scripts/seed.js"
+    "seed": "node -r dotenv/config ./app/scripts/seed.js"
   },
   "dependencies": {
     "@nextui-org/navbar": "^2.0.30",
     "@nextui-org/react": "^2.3.6",
     "@radix-ui/react-slot": "^1.0.2",
+    "@vercel/postgres": "^0.8.0",
+    "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^2.2.0",
     "clsx": "^2.1.1",
     "daisyui": "^4.11.1",
+    "dotenv": "^16.4.5",
     "embla-carousel-autoplay": "^8.0.4",
     "embla-carousel-react": "^8.0.4",
     "framer-motion": "^11.2.4",

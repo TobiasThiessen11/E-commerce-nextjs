@@ -1,9 +1,12 @@
 const { db } = require('@vercel/postgres');
 const {
+  users,
   products,
   categories,
-  ñ,
+  productsImages,
+  movies,
   sales,
+  salesDetails,
 } = require('../app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
@@ -59,8 +62,8 @@ async function seedProducts(client) {
     price DECIMAL(10,2) NOT NULL,
     description TEXT NOT NULL,
     state BIT NOT NULL,
-    m_id UUID NOT NULL FOREIGN KEY REFERENCES movies(m_id), --------TODO----------
-    c_id UUID NOT NULL FOREIGN KEY REFERENCES categories(c_id), --------TODO----------
+    movie_id UUID NOT NULL FOREIGN KEY REFERENCES movies(m_id),
+    category_id UUID NOT NULL FOREIGN KEY REFERENCES categories(c_id),
   );
 `;
 
@@ -70,8 +73,8 @@ async function seedProducts(client) {
     const insertedProducts = await Promise.all(
       products.map(
         (product) => client.sql`
-        INSERT INTO products (p_id, name, price, description, state, m_ID, c_ID)
-        VALUES (${product.p_id}, ${product.name}, ${product.price}, ${product.description}, ${product.state}, ${product.m_ID}, ${product.c_ID})
+        INSERT INTO products (p_id, name, price, description, state, movie_ID, category_ID)
+        VALUES (${product.p_id}, ${product.name}, ${product.price}, ${product.description}, ${product.state}, ${product.movie_ID}, ${product.category_ID})
         ON CONFLICT (id) DO NOTHING;
       `,
       ),
@@ -97,7 +100,7 @@ async function seedProductsImages(client) {
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS productsImages (
         pi_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        p_id UUID NOT NULL FOREIGN KEY REFERENCES products(p_id),
+        product_id UUID NOT NULL FOREIGN KEY REFERENCES products(p_id),
         asset_id VARCHAR(255) NOT NULL,     --------TODO----------
         image_url VARCHAR(255) NOT NULL     --------TODO----------
       );
@@ -109,8 +112,8 @@ async function seedProductsImages(client) {
     const insertedProductsImages = await Promise.all(
       productsImages.map(
         (productImages) => client.sql`
-        INSERT INTO productsImages (pi_id, p_id, asset_id, image_url)
-        VALUES (${productImages.pi_id}, ${productImages.p_id}, ${productImages.asset_id}, ${productImages.image_url})
+        INSERT INTO productsImages (pi_id, product_id, asset_id, image_url)
+        VALUES (${productImages.pi_id}, ${productImages.product_id}, ${productImages.asset_id}, ${productImages.image_url})
         ON CONFLICT (id) DO NOTHING;
       `,
       ),
@@ -174,9 +177,9 @@ async function seedCategories(client) {
       );
     `;
 
-    console.log(`Created "movies" table`);
+    console.log(`Created "categories" table`);
 
-    // Insert data into the "movies" table
+    // Insert data into the "categories" table
     const insertedCategories = await Promise.all(
       categories.map(
         (category) => client.sql`
@@ -205,9 +208,9 @@ async function seedSales(client) {
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS sales (
         s_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        date TIMESTAMP  NOT NULL,
+        date TIMESTAMP NOT NULL,
         transaction_mp_id VARCHAR(255) NOT NULL,
-        p_email TEXT NOT NULL,    
+        person_email TEXT NOT NULL,    
       );
     `;
 
@@ -217,8 +220,8 @@ async function seedSales(client) {
     const insertedSales = await Promise.all(
       sales.map(
         (sale) => client.sql`
-        INSERT INTO sales (s_id, date, transaction_mp_id, p_email)
-        VALUES (${sale.s_id}, ${sale.date}, ${sale.transaction_mp_id}, ${sale.p_email})
+        INSERT INTO sales (s_id, date, transaction_mp_id, person_email)
+        VALUES (${sale.s_id}, ${sale.date}, ${sale.transaction_mp_id}, ${sale.person_email})
         ON CONFLICT (month) DO NOTHING;
       `,
       ),
@@ -245,8 +248,8 @@ async function seedSalesDetails(client) {
         price DECIMAL(10,2) NOT NULL,
         quantity INTEGER NOT NULL,
         subtotal DECIMAL(10,2) NOT NULL,
-        s_id UUID NOT NULL FOREIGN KEY REFERENCES sales(s_id),
-        p_id UUID NOT NULL FOREIGN KEY REFERENCES products(p_id),    
+        sale_id UUID NOT NULL FOREIGN KEY REFERENCES sales(s_id),
+        product_id UUID NOT NULL FOREIGN KEY REFERENCES products(p_id),    
       );
     `;
 
@@ -256,8 +259,8 @@ async function seedSalesDetails(client) {
     const insertedSalesDetails = await Promise.all(
       salesDetails.map(
         (saleDetail) => client.sql`
-        INSERT INTO sales (sd_id, price, quantity, subtotal, s_id, p_id)
-        VALUES (${saleDetail.sd_id}, ${saleDetail.price}, ${saleDetail.quantity}, ${saleDetail.subtotal}, ${saleDetail.s_id}, ${saleDetail.p_id})
+        INSERT INTO sales (sd_id, price, quantity, subtotal, sale_id, product_id)
+        VALUES (${saleDetail.sd_id}, ${saleDetail.price}, ${saleDetail.quantity}, ${saleDetail.subtotal}, ${saleDetail.sale_id}, ${saleDetail.product_id})
         ON CONFLICT (month) DO NOTHING;
       `,
       ),
@@ -285,7 +288,6 @@ async function main() {
   await seedCategories(client);
   await seedSales(client);
   await seedSalesDetails(client);
-
 
   await client.end();
 }

@@ -76,7 +76,7 @@ async function seedProducts(client) {
       products.map(
         (product) => client.sql`
         INSERT INTO products (p_id, name, price, description, state, movie_ID, category_ID)
-        VALUES (${product.p_id}, ${product.name}, ${product.price}, ${product.description}, ${product.state}, ${product.movie_ID}, ${product.category_ID})
+        VALUES (${product.p_id}, ${product.name}, ${product.price}, ${product.description}, ${product.state}, ${product.movie_id}, ${product.category_id})
         ON CONFLICT (p_id) DO NOTHING;
       `,
       ),
@@ -136,11 +136,12 @@ async function seedProductsImages(client) {
 
 async function seedMovies(client) {
   try {
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     // Create the "movies" table if it doesn't exist
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS movies (
         m_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
+        name VARCHAR(255) NOT NULL
       );
     `;
 
@@ -169,51 +170,18 @@ async function seedMovies(client) {
   }
 }
 
-async function seedCategories(client) {
-  try {
-    // Create the "categories" table if it doesn't exist
-    const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS categories (
-        c_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        description TEXT NOT NULL,
-      );
-    `;
 
-    console.log(`Created "categories" table`);
-
-    // Insert data into the "categories" table
-    const insertedCategories = await Promise.all(
-      categories.map(
-        (category) => client.sql`
-        INSERT INTO categories (c_id, name, description)
-        VALUES (${category.c_id}, ${category.name}, ${category.description})
-        ON CONFLICT (c_id) DO NOTHING;
-      `,
-      ),
-    );
-
-    console.log(`Seeded ${insertedCategories.length} categories`);
-
-    return {
-      createTable,
-      categories: insertedCategories,
-    };
-  } catch (error) {
-    console.error('Error seeding revenue:', error);
-    throw error;
-  }
-}
 
 async function seedSales(client) {
   try {
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     // Create the "categories" table if it doesn't exist
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS sales (
         s_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         date TIMESTAMP NOT NULL,
         transaction_mp_id VARCHAR(255) NOT NULL,
-        person_email TEXT NOT NULL,    
+        person_email TEXT NOT NULL    
       );
     `;
 
@@ -242,8 +210,49 @@ async function seedSales(client) {
   }
 }
 
+async function seedCategories(client) {
+  try {
+    // Verificar y crear la extensión "uuid-ossp" si no existe
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+
+    // Crear la tabla "categories" si no existe
+    const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS categories (
+        c_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        description TEXT NOT NULL
+      );
+    `;
+
+    console.log(`Created "categories" table`);
+
+    // Insertar datos en la tabla "categories"
+    const insertedCategories = await Promise.all(
+      categories.map(
+        (category) => client.sql`
+        INSERT INTO categories (c_id, name, description)
+        VALUES (${category.c_id}, ${category.name}, ${category.description})
+        ON CONFLICT (c_id) DO NOTHING;
+      `
+      )
+    );
+
+    console.log(`Seeded ${insertedCategories.length} categories`);
+
+    return {
+      createTable,
+      categories: insertedCategories,
+    };
+  } catch (error) {
+    console.error('Error seeding categories:', error);
+    throw error;
+  }
+}
+
+
 async function seedSalesDetails(client) {
   try {
+    await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     // Create the "categories" table if it doesn't exist
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS salesDetails (
@@ -264,11 +273,13 @@ async function seedSalesDetails(client) {
     const insertedSalesDetails = await Promise.all(
       salesDetails.map(
         (saleDetail) => client.sql`
-        INSERT INTO sales (sd_id, price, quantity, subtotal, sale_id, product_id)
+        INSERT INTO salesDetails (sd_id, price, quantity, subtotal, sale_id, product_id)
         VALUES (${saleDetail.sd_id}, ${saleDetail.price}, ${saleDetail.quantity}, ${saleDetail.subtotal}, ${saleDetail.sale_id}, ${saleDetail.product_id})
         ON CONFLICT (sd_id) DO NOTHING;
       `,
       ),
+
+
     );
 
     console.log(`Seeded ${insertedSalesDetails.length} salesDetails`);
@@ -285,7 +296,6 @@ async function seedSalesDetails(client) {
 
 async function main() {
   const client = await db.connect();
-
   await seedUsers(client);
   await seedMovies(client); 
   await seedCategories(client); 
@@ -293,7 +303,6 @@ async function main() {
   await seedProductsImages(client);
   await seedSales(client);
   await seedSalesDetails(client);
-
   await client.end();
 }
 

@@ -10,22 +10,22 @@
 
   const categories = [
     {
-      c_id: '41824b2-4201-4271-9855-fec4b6a6442a',
+      c_id: '410620b2-4001-4271-9855-fec4b6a6442a',
       name: 'Peluches',
       description: 'Los peluches de tus personajes favoritos. Los más suavecitos del mercado! ',
     },
     {
-      c_id: '41834b2-4201-4271-9855-fec4b6a6442a',
+      c_id: '410621b2-4001-4271-9855-fec4b6a6442a',
       name: 'Juguetes',
       description: 'Juguetes para niños y adultos. Por que nunca es tarde. ',
     },
     {
-      c_id: '41844b2-4201-4271-9855-fec4b6a6442a',
+      c_id: '410622b2-4001-4271-9855-fec4b6a6442a',
       name: 'Coleccionables',
       description: 'Encontra los Coleccionables de tus peliculas favoritas. ',
     },
     {
-      c_id: '41854b2-4201-4271-9855-fec4b6a6442a',
+      c_id: '410623b2-4001-4271-9855-fec4b6a6442a',
       name: 'Ropa',
       description: 'Vestite como si fueses el protagonista de tu pelicula favorita',
     },
@@ -59,16 +59,16 @@
     {
       p_id: '3958dc9e-712f-4377-85e9-fec4b6a6442a',
       name: 'Muñeca Rapunzel',
-      price: '$29999.99',
+      price: '29999.99',
       description: 'Muñeca de la pelicula rapunzel',
       state : '1',
-      movie_id  : movies[0].m_id,
+      movie_id  : movies[1].m_id,
       category_id : categories[0].c_id,
     },
     {
       p_id: '3959dc9e-712f-4377-85e9-fec4b6a6442a',
       name: 'Muñeco de BD-1',
-      price: '$49999.99',
+      price: '49999.99',
       description: 'Juguete robot de pelicula Star-Wars',
       state : '1',
       movie_id  : movies[1].m_id,
@@ -77,7 +77,7 @@
     {
       p_id: '3960dc9e-712f-4377-85e9-fec4b6a6442a',
       name: 'Peluche Stitch',
-      price: '$39999.99',
+      price: '39999.99',
       description: 'Peluche de felpa de la pelicula Lilo y Stitch',
       state : '1',
       movie_id  : movies[2].m_id,
@@ -86,7 +86,7 @@
     {
       p_id: '3961dc9e-712f-4377-85e9-fec4b6a6442a',
       name: 'Woody',
-      price: '$34000',
+      price: '34000',
       description: 'Figura de accion de Woody, (Hay una serpiente en mi bota)',
       state : '0',
       movie_id  : movies[3].m_id,
@@ -95,7 +95,7 @@
     {
       p_id: '3962dc9e-712f-4377-85e9-fec4b6a6442a',
       name: 'Buzz lightyear',
-      price: '$38000',
+      price: '38000',
       description: 'Figura de accion de Buzz Lightyear, (No puede volar)',
       state : '1',
       movie_id  : movies[3].m_id,
@@ -104,7 +104,7 @@
     {
       p_id: '3963dc9e-712f-4377-85e9-fec4b6a6442a',
       name: 'Peluche Walle-E',
-      price: '$27000',
+      price: '27000',
       description: 'Peluche de la pelicula Walle-E',
       state : '1',
       movie_id  : movies[4].m_id,
@@ -113,7 +113,7 @@
     {
       p_id: '3964dc9e-712f-4377-85e9-fec4b6a6442a',
       name: 'Nave Lego Star-Wars',
-      price: '$67000',
+      price: '67000',
       description: 'La mejor nave de lego que vas a encontrar',
       state : '1',
       movie_id  : movies[1].m_id,
@@ -178,9 +178,9 @@
   const salesDetails = [
     {
       sd_id : '3958dc9e-712f-4377-85e9-fec4b6a6442a',
-      price : '$20.310',
+      price : '20310',
       quantity : '1',
-      subtotal : '$20.310',
+      subtotal : '20310',
       sale_id : sales[0].s_id,
       product_id : products[0].p_id,
     }

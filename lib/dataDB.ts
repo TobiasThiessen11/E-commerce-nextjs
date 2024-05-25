@@ -36,7 +36,6 @@ export async function fetchProducts() {
   export function findImage(p_id: string, images: ProductImage[]): string {
     for (let i = 0; i < images.length; i++) {
       if (images[i].product_id === p_id) {
-        console.log(images[i].image_url)
         return images[i].image_url
       }
     }
@@ -48,7 +47,6 @@ export async function fetchProducts() {
     try {
   
       const data = await sql<ProductImage>`SELECT * FROM productsImages`;
-      console.log(data.rows)
       return data.rows;
     } catch (error) {
       console.error('Database Error:', error);

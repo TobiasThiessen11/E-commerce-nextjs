@@ -54,7 +54,7 @@ export default function Home() {
             {json.map((product) => (
               <CarouselItem key={product.id} className=" md:basis-1/3 lg:basis-1/4">
                 <div className="p-2">
-                  <Card id={"1"} name={product.name} image={product.image} description={product.description} price={product.price}/>
+                  <Card id={"1"} name={product.name} image={product.image} description={product.description} price={12345}/>
                 </div>
               </CarouselItem>
             ))}

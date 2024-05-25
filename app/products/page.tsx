@@ -2,23 +2,13 @@ import React from 'react'
 import Filter from './ui/Filter'
 import Card from '../ui/Card'
 import Banner from './ui/Banner'
-import {fetchProducts, fetchProductsImages } from '@/lib/dataDB'
+import {fetchProducts, fetchProductsImages, findImage } from '@/lib/dataDB'
 import { ProductImage } from '@/lib/definitions'
 
 export default async function Products () {
   const products = await fetchProducts() 
   const images: ProductImage[] = await fetchProductsImages()
     
-  function findImage(p_id: string): string {
-    for (let i = 0; i < images.length; i++) {
-      if (images[i].product_id === p_id) {
-        console.log(images[i].image_url)
-        return images[i].image_url
-      }
-    }
-    return ''
-  }
-
   return (
     <div>
 
@@ -31,7 +21,7 @@ export default async function Products () {
                     key={product.p_id}
                     id={product.p_id}
                     name={product.name}
-                    image={findImage(product.p_id)}
+                    image={findImage(product.p_id, images)}
                     description={product.description}
                     price={product.price}
                 />

@@ -1,20 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import Card from "./ui/Card";
 import NewsCard from "./ui/NewsCard";
 import MovieCard from "./ui/MovieCard";
 import MoviesCarousel from "./ui/MoviesCarousel";
-import json from "./example.json"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-
-
-
+import ProductsCarousel from "./ui/ProductsCarousel";
 
 export default function Home() {
   return (
@@ -47,22 +36,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="h-full md:py-24 py-5 bg-white lg:py-10 max-w-6xl mx-auto">
-          <Carousel className="w-full " >
-          <h2 className="text-center text-3xl mb-4 font-bold tracking-tighter sm:text-4xl md:text-5xl">Productos Destacados</h2>
-          <CarouselContent className=" mb-2">
-            {json.map((product) => (
-              <CarouselItem key={product.id} className=" md:basis-1/3 lg:basis-1/4">
-                <div className="p-2">
-                  <Card id={"1"} name={product.name} image={product.image} description={product.description} price={12345}/>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </section>
+      <ProductsCarousel/>
 
       <section className=" ">
         <h1 className="text-center w-full text-3xl m-2 font-bold sm:text-4xl md:text-5xl">Novedades</h1>

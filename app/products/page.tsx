@@ -1,10 +1,24 @@
 import React from 'react'
 import Filter from './ui/Filter'
 import Card from '../ui/Card'
-import json from '../example.json'
 import Banner from './ui/Banner'
+import {fetchProducts, fetchProductsImages } from '@/lib/dataDB'
+import { ProductImage } from '@/lib/definitions'
 
-export default function Products () {
+export default async function Products () {
+  const products = await fetchProducts() 
+  const images: ProductImage[] = await fetchProductsImages()
+    
+  function findImage(p_id: string): string {
+    for (let i = 0; i < images.length; i++) {
+      if (images[i].product_id === p_id) {
+        console.log(images[i].image_url)
+        return images[i].image_url
+      }
+    }
+    return ''
+  }
+
   return (
     <div>
 
@@ -12,9 +26,16 @@ export default function Products () {
             <div className='md:flex'>
                 <Filter />
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 m-5">
-                {json.map((product) => (
-                    <Card id={product.id} name={product.name} image={product.image} description={product.description} price={product.price}/>
-                ))}
+                {products.map((product) => (
+                <Card
+                    key={product.p_id}
+                    id={product.p_id}
+                    name={product.name}
+                    image={findImage(product.p_id)}
+                    description={product.description}
+                    price={product.price}
+                />
+            ))}
             </div>
             
         </div>

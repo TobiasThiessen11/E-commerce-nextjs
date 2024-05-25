@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 interface Movie {
     title: string;
     poster_path: string;

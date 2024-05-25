@@ -29,7 +29,7 @@ export async function fetchProducts() {
       return data.rows
     } catch (error) {
       console.error('Database Error:', error);
-      throw new Error('Failed to fetch invoice.');
+      throw new Error('Failed to fetch Images By id.');
     }
   }
 

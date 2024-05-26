@@ -5,14 +5,13 @@ import Image from "next/image"
 
 
 export default async function Page({ params }: { params: { p_id: string } }) {
-    console.log(params)
     const id = params.p_id;
     const product = await fetchProductById(id);
     const images = await fetchImageByProductId(id);
         
     return(
-        <div className="min-h-screen">
-            <div className="font-sans p-6 max-w-5xl mx-auto bg-gray-100 rounded-lg shadow-md">
+        <div className="h-screen mb-8">
+            <div className="font-sans p-6 max-w-5xl mx-auto bg-gray-100 h-screen rounded-lg shadow-md ">
             <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-12">
              <div className="grid gap-4 md:gap-10 items-start">
                 <Image
@@ -25,18 +24,16 @@ export default async function Page({ params }: { params: { p_id: string } }) {
                 
             </div>
             <div className="grid gap-4 md:gap-10 items-start">
-                <div className="hidden md:flex items-start">
-                <div className="grid gap-4">
-                    <h1 className="font-bold text-3xl lg:text-4xl">{product.name}</h1>
+                <div className=" md:flex items-start">
+                <div className="grid gap-4 ">
+                        <h1 className="font-bold text-3xl lg:text-4xl">{product.name}</h1>
                     <div>
-                    <p>{product.description}</p>
+                        <p>{product.description}</p>                    
                     </div>
-                    <div className="flex items-center gap-4">
+                </div>
                     
-                    </div>
                 </div>
-                <div className="text-4xl font-bold ml-auto">{product.price}</div>
-                </div>
+                <div className="text-4xl font-bold">$ {product.price}</div>
                 <form className="grid gap-4 ">
                 <div className="grid gap-2">
                     <span className="text-gray-500">Cantidad</span>

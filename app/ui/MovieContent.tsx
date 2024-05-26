@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@nextui-org/react';
 
 interface MovieCardProps {
     movie: string;
@@ -15,21 +17,32 @@ const MovieContent: React.FC<MovieCardProps> = ({ movie, description, image, vid
     videoTrailer : `https://www.youtube.com/embed/${videoTrailer.split('v=')[1]}`;
 
     return (
-        <div className='md:flex'>
-            <div className=' flex-1 flex flex-col items-center md:mt-3 p-2'>
-                <h1 className='md:text-6xl text-4xl text-center'>{movie}</h1>
-                <div className='md:flex md:mt-3'>
-                    <div>
-                        <Image src={image} width={400} height={600} alt={movie} className='' />
-                    </div>
-                    <div className='md:flex-1 text-center md:p-2 md:pl-4'>
-                        <span className='text-4xl'>Descripcion: </span>
-                        <p className='md:text-2xl text-l flex-1 text-center'>{description}</p>
-                        <h3 className='md:text-2xl text-center md:text-center md:mt-2'>Disponible a partir del dia: {releaseDate}</h3>
-                    </div>
-                </div>
+        <section className="w-full py-12 md:py-10 lg:py-10">
+        <div className="container grid grid-cols-1 md:grid-cols-2 gap-8  md:px-6">
+            <div className="rounded-lg overflow-hidden">
+            <Image
+                alt="Movie Poster"
+                className="w-full h-[500px]  object-cover"
+                height={900}
+                src={image}
+                style={{
+                    aspectRatio: "1600/900", objectFit: "cover",
+                }}
+                width={1600}
+          />
+            </div>
+            <div className="flex flex-col justify-center gap-4">
+            <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{movie}</h2>
+                <p className="text-gray-500 md:text-xl dark:text-gray-400">
+                {description}
+                </p>
+                <span className="text-white-500 md:text-xl dark:text-gray-400"> {releaseDate} </span>
+            </div>
+                
             </div>
         </div>
+    </section>
     );
 }
 

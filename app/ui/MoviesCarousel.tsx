@@ -36,7 +36,7 @@ const MoviesCarousel: React.FC = () => {
   return (
     <div className='bg-gray-800 text-white'>
       <Carousel className="w-full">
-        <h2 className="text-center text-5xl mb-4 py-2 tracking-tighter sm:text-4xl md:text-5xl">Películas Animadas en Cine</h2>
+        <h2 className="text-center text-5xl py-2 tracking-tighter sm:text-4xl md:text-5xl">Películas Animadas en Cine</h2>
         <CarouselContent className="mb-2">
           { movies?.map((movie, index) => (
             <CarouselItem key={index} className="md:basis-1/1 lg:basis-1/1">

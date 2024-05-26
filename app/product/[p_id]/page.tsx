@@ -2,26 +2,26 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { fetchImageByProductId, fetchProductById } from "@/lib/dataDB";
 import Image from "next/image"
-
+import ImageGallery from "react-image-gallery"
+import "react-image-gallery/styles/css/image-gallery.css";
+import MyGallery from "../ui/MyGallery";
 
 export default async function Page({ params }: { params: { p_id: string } }) {
     const id = params.p_id;
     const product = await fetchProductById(id);
-    const images = await fetchImageByProductId(id);
-        
+    const imagesData = await fetchImageByProductId(id);
+
+    const images = imagesData.map((image) => ({
+        original: image.image_url,
+        thumbnail: image.image_url,
+    }));
+    
     return(
         <div className="h-screen mb-8">
             <div className="font-sans p-6 max-w-5xl mx-auto bg-gray-100 h-screen rounded-lg shadow-md ">
             <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-12">
              <div className="grid gap-4 md:gap-10 items-start">
-                <Image
-                alt="Product Image"
-                className="aspect-square object-cover border border-gray-200 w-full rounded-lg overflow-hidden dark:border-gray-800 bg-white"
-                height={600}
-                src={images[0].image_url}
-                width={600}
-                />
-                
+             <MyGallery images={images}/>
             </div>
             <div className="grid gap-4 md:gap-10 items-start">
                 <div className=" md:flex items-start">

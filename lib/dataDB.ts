@@ -15,6 +15,23 @@ export async function fetchProducts() {
     }
   }
 
+  export async function fetchProductById(id: string): Promise<Product> {
+    noStore();
+    try {
+      const data = await sql<Product>`
+        SELECT
+          *
+        FROM products
+        WHERE products.p_id = ${id};
+      `;
+      
+      return data.rows[0]
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch product By id.');
+    }
+  }
+
   export async function fetchImageByProductId(id: string) {
     noStore();
     try {

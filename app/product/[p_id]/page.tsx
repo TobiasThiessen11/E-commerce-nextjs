@@ -12,15 +12,17 @@ export default async function Page({ params }: { params: { p_id: string } }) {
         
     return(
         <div className="min-h-screen">
+            <div className="font-sans p-6 max-w-5xl mx-auto bg-gray-100 rounded-lg shadow-md">
             <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-12">
              <div className="grid gap-4 md:gap-10 items-start">
                 <Image
                 alt="Product Image"
-                className="aspect-square object-cover border border-gray-200 w-full rounded-lg overflow-hidden dark:border-gray-800"
+                className="aspect-square object-cover border border-gray-200 w-full rounded-lg overflow-hidden dark:border-gray-800 bg-white"
                 height={600}
                 src={images[0].image_url}
                 width={600}
                 />
+                
             </div>
             <div className="grid gap-4 md:gap-10 items-start">
                 <div className="hidden md:flex items-start">
@@ -64,6 +66,7 @@ export default async function Page({ params }: { params: { p_id: string } }) {
                     {product.description}
                 </p>
                 </div>
+            </div>
             </div>
             </div>
         </div>

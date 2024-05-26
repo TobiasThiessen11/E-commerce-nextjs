@@ -42,11 +42,11 @@ export const Header = () => {
       </header>
       {isMobileMenuOpen && (
         <div className='lg:hidden bg-white text-black p-4'>
-          <Link href={"/products"} className='block py-2'>Productos</Link>
-          <Link href={"/about"} className='block py-2'>Oferta</Link>
-          <Link href={"/contact"} className='block py-2'>Nuevos Arrivos</Link>
-          <Link href={"/cart"} className='block py-2'>Carrito(0)</Link>
-          <Link href={"/login"} className='block py-2 bg-secondary p-2 px-4 rounded-full text-white'>
+          <Link href={"/products"} onClick={toggleMobileMenu} className='block py-2'>Productos</Link>
+          <Link href={"/about"} onClick={toggleMobileMenu} className='block py-2'>Oferta</Link>
+          <Link href={"/contact"} onClick={toggleMobileMenu} className='block py-2'>Nuevos Arrivos</Link>
+          <Link href={"/cart"} onClick={toggleMobileMenu} className='block py-2'>Carrito(0)</Link>
+          <Link href={"/login"} onClick={toggleMobileMenu} className='block py-2 bg-secondary p-2 px-4 rounded-full text-white'>
             Login
           </Link>
         </div>

@@ -5,32 +5,34 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 export default function Page(){
   return (
-    <div className="mx-auto max-w-md space-y-6">
-      <div className="space-y-2 text-center">
-        <h1 className="text-3xl font-bold">Empieza a comprar</h1>
-        <p className="text-gray-500 dark:text-gray-400">Ingresa tu email y tu contraseña para crear una cuenta</p>
-      </div>
-      <div className="space-y-4 px-6">
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" placeholder="m@example.com" required type="email" />
+    <div className="flex items-center px-6 justify-center min-h-screen bg-secondary">
+      <div className="mx-auto w-full max-w-lg space-y-6 bg-white p-5 rounded-xl">
+        <div className="text-center">
+          <h1 className="text-5xl font-bold">Bienvenido</h1>
+          <p className="text-gray-800 dark:text-gray-400">Ingresa tu email y tu contraseña para registrarte.</p>
+          <p className="text-black text-xl">(Claramente esta funcionalidad no se encuentra disponible)</p>
         </div>
+        <div className="space-y-2 ">
         <div className="space-y-2">
-          <Label htmlFor="email">Nombre y Apellido</Label>
-          <Input id="name" placeholder="Tobias Thiessen" required type="name" />
+            <Label htmlFor="password">Nombre y Apellido</Label>
+            <Input id="password" placeholder="Tobias Thiessen" required type="password" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" placeholder="tobiXD@example.com" required type="email" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="password">Contraseña</Label>
+            <Input id="password" placeholder="*******" required type="password" />
+          </div>
+          <Button className="w-full" type="submit">
+            Sign in
+          </Button>
+          <Link className="inline-block w-full text-center text-sm underline" href="/register">
+            No tienes una cuenta? Registrate 
+          </Link>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" required type="password" />
-        </div>
-        <Button className="w-full" type="submit">
-          Sign in
-        </Button>
-        <Link className="inline-block w-full text-center text-sm underline" href="#">
-          Don't have an account? Register
-        </Link>
       </div>
     </div>
   )
 }
-

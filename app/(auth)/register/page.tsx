@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
-export const page = () => {
+export default function Page(){
   return (
     <div className="mx-auto max-w-md space-y-6">
       <div className="space-y-2 text-center">
@@ -34,4 +34,3 @@ export const page = () => {
   )
 }
 
-export default page

@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 
 
-export const page = () => {
+export default function Page(){
   return (
     <div className="mx-auto my-16 max-w-md space-y-6">
       <div className="space-y-2 text-center">
@@ -32,4 +32,3 @@ export const page = () => {
   )
 }
 
-export default page

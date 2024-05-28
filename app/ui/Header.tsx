@@ -19,7 +19,7 @@ export const Header = () => {
         <Link href={"/"} className='m-2 mt-3 pl-4 text-black text-3xl font-bold'>
           Movie Merch
         </Link>
-        <nav className='gap-6 items-center hidden text-black font-semibold lg:flex'>
+        <nav className='gap-6 items-center mx-3  hidden text-black font-semibold lg:flex'>
           <Link href={"/products"}>Productos</Link>
           <Link href={"/about"}>Oferta</Link>
           <Link href={"/contact"}>Nuevos Arrivos</Link>

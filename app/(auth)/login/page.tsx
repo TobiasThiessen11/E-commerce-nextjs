@@ -1,11 +1,16 @@
+//'use client'
 import React from 'react'
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+//import { useFormState, useFormStatus } from 'react-dom';
+//import { authenticate } from '@/lib/actions';
 
 
 export default function Page(){
+ // const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+
   return (
     <div className="flex items-center px-6 justify-center min-h-screen bg-secondary">
       <div className="mx-auto w-full max-w-lg space-y-6 bg-white p-5 rounded-xl">
@@ -16,7 +21,7 @@ export default function Page(){
         <div className="space-y-2 ">
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" placeholder="tobiXD@example.com" required type="email" />
+            <Input id="email" placeholder="tuemail@example.com" required type="email" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Contraseña</Label>

@@ -5,10 +5,13 @@ import Image from "next/image"
 import ImageGallery from "react-image-gallery"
 import "react-image-gallery/styles/css/image-gallery.css";
 import MyGallery from "../ui/MyGallery";
+import notFound from "@/app/not-found";
 
 export default async function Page({ params }: { params: { p_id: string } }) {
     const id = params.p_id;
     const product = await fetchProductById(id);
+    if(!product)
+        return notFound();
     const imagesData = await fetchImageByProductId(id);
 
     const images = imagesData.map((image) => ({

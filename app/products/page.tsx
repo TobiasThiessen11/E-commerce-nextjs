@@ -8,9 +8,11 @@ import notFound from '../not-found'
 
 export default async function Products () {
   const products = await fetchProducts()
-  
+  if(!products) 
+    return notFound()
   const images: ProductImage[] = await fetchProductsImages()
-    
+  if(!images) 
+    return notFound()
   return (
     <div>
 

@@ -4,9 +4,11 @@ import Card from '../ui/Card'
 import Banner from './ui/Banner'
 import {fetchProducts, fetchProductsImages, findImage } from '@/lib/dataDB'
 import { ProductImage } from '@/lib/definitions'
+import notFound from '../not-found'
 
 export default async function Products () {
-  const products = await fetchProducts() 
+  const products = await fetchProducts()
+  
   const images: ProductImage[] = await fetchProductsImages()
     
   return (

@@ -41,9 +41,8 @@ export async function fetchProducts() {
         FROM productsImages
         WHERE productsImages.product_id = ${id};
       `;
-  
-  
       return data.rows
+      
     } catch (error) {
       console.error('Database Error:', error);
       throw new Error('Failed to fetch Images By id.');
@@ -58,6 +57,9 @@ export async function fetchProducts() {
     }
     return ''
   }
+
+
+
 
   export async function fetchProductsImages() {
     noStore();

@@ -20,11 +20,10 @@ export default function Error({
     <main className="flex h-screen flex-col items-center justify-start pt-16">
       <Image
               src="/img/lotso-triste-error.png"
-              layout="responsive"
               width={800}
               height={800}
               alt="Lotso sad error"
-              className="w-1/4 h-auto"
+              className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 h-auto"
             />
       <h2 className="text-center text-3xl mt-4">¡UPS! ALGO SALIO MAL</h2>
       <p className="gray-300 text-center text-xl">Parece que hay un problema técnico porque no podemos encontrar lo que buscas</p>

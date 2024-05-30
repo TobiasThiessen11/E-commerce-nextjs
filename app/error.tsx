@@ -20,8 +20,9 @@ export default function Error({
     <main className="flex h-screen flex-col items-center justify-start pt-16">
       <Image
               src="/img/lotso-triste-error.png"
-              width={1000}
-              height={1000}
+              layout="responsive"
+              width={800}
+              height={800}
               alt="Lotso sad error"
               className="w-1/4 h-auto"
             />

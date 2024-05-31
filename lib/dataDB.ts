@@ -11,7 +11,32 @@ export async function fetchProducts() {
       return data.rows;
     } catch (error) {
       console.error('Database Error:', error);
-      throw new Error('Failed to fetch revenue data.');
+      throw new Error('Failed to fetch products.');
+    }
+  }
+
+  export async function fetchCategories() {
+    noStore();
+    try {
+  
+      const data = await sql<Category>`SELECT * FROM categories`;
+   
+      return data.rows;
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch categories.');
+    }
+  }
+  export async function fetchMovies() {
+    noStore();
+    try {
+  
+      const data = await sql<Movie>`SELECT * FROM movies`;
+   
+      return data.rows;
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch categories.');
     }
   }
 

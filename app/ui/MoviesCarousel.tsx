@@ -34,11 +34,11 @@ const MoviesCarousel: React.FC = () => {
   }, []);
 
   return (
-    <div className='bg-gray-800 text-white'>
-      <Carousel className="w-full">
+    <section className='bg-gray-800 text-white'>
+      <Carousel className="relative w-full">
         <h2 className="text-center text-4xl py-2 tracking-tighter sm:text-4xl md:text-5xl">Películas Animadas en Cine</h2>
         <CarouselContent className="mb-2">
-          { movies?.map((movie, index) => (
+          {movies?.map((movie, index) => (
             <CarouselItem key={index} className="md:basis-1/1 lg:basis-1/1">
               <div className="p-2">
                 <MovieContent movie={movie.movie} image={movie.image} description={movie.description} videoTrailer={movie.videoTrailer} releaseDate={movie.releaseDate}/>
@@ -46,10 +46,10 @@ const MoviesCarousel: React.FC = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="absolute left-2 top-1/2 transform  text-white bg-black p-2 cursor-pointer" />
+        <CarouselNext className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 cursor-pointer" />
       </Carousel>
-    </div>
+    </section>
   );
 }
 

@@ -82,8 +82,29 @@ export async function fetchProducts() {
     }
     return ''
   }
-
-
+  const ITEMS_PER_PAGE = 6;
+  export async function fetchProductsByName(
+    query: string,
+    currentPage: number,
+  ) {
+    noStore();
+    const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  
+    try {
+      const products = await sql<Product>`
+        SELECT
+          *
+        FROM products
+        WHERE
+          products.name ILIKE ${`%${query}%`}
+      `;
+  
+      return products.rows;
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch invoices.');
+    }
+  }
 
 
   export async function fetchProductsImages() {

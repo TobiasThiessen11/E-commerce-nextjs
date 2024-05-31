@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { Search, Menu } from 'lucide-react'
+import {Menu } from 'lucide-react'
+import Search from './Search'
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -24,14 +25,7 @@ export const Header = () => {
           <Link href={"/about"}>Oferta</Link>
           <Link href={"/contact"}>Nuevos Arrivos</Link>
           <div className='flex h-10 lg:ml-auto max-lg:w-full'>
-            <div className='flex xl:w-80 max-xl:w-full bg-gray-100 px-6 py-2 rounded-full outline outline-transparent focus-within:outline-[#007bff] focus-within:bg-transparent'>
-              <input
-                type='text'
-                placeholder='Busca a nemo...'
-                className='w-full text-sm bg-transparent rounded-full outline-none pr-2'
-              />
-              <Search className='w-10 h-6' />
-            </div>
+            <Search placeholder='Busca a Nemo...' />
           </div>
           <Link href={"/cart"}>Carrito(0)</Link>
           <Link href={"/login"} className='bg-secondary p-2 px-4 rounded-full text-white'>

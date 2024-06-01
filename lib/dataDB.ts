@@ -145,3 +145,27 @@ export async function fetchProducts() {
       throw new Error('Failed to fetch revenue data.');
     }
   }
+
+  export async function fetchMostSoldProducts() {
+    try {
+        const products = await sql`
+        SELECT
+          p.*,
+          SUM(sd.quantity) AS total_sales
+        FROM
+          SalesDetails sd
+        INNER JOIN
+          Products p ON sd.product_id = p.p_id
+        GROUP BY
+          p.p_id
+        ORDER BY
+          total_sales DESC
+        LIMIT 5
+`;
+
+        return products.rows;
+    } catch (error) {
+        console.error('Database Error:', error);
+        throw new Error('Failed to fetch most sold products.');
+    }
+}

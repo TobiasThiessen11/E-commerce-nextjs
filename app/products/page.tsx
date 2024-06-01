@@ -28,7 +28,6 @@ export default async function Products ({
             <Banner image="/img/banner.png" title="Clasicos" description="Hasta un -40%"/>
             <div className='md:flex h-full'>
                 <Filter />
-                <Suspense key={query + currentPage} fallback={<div>CARGANDO</div>}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 m-5">
                   {productsFilter.map((product) => (
                   <Card
@@ -41,7 +40,6 @@ export default async function Products ({
                   />
                   ))}
                 </div>
-                </Suspense>
           </div>
     </div>
   )

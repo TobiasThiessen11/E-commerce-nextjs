@@ -92,17 +92,23 @@ export async function fetchProducts() {
   
     try {
       const products = await sql<Product>`
-        SELECT
-          *
+      SELECT
+        products.*,
+        movies.name AS movie_title,
+        categories.name AS category_name
         FROM products
+        JOIN movies ON products.movie_id = movies.m_id
+        JOIN categories ON products.category_id = categories.c_id
         WHERE
-          products.name ILIKE ${`%${query}%`}
-      `;
+        products.name ILIKE ${`%${query}%`} OR
+        movies.name ILIKE ${`%${query}%`} OR
+        categories.name ILIKE ${`%${query}%`}
+    `;
   
       return products.rows;
     } catch (error) {
       console.error('Database Error:', error);
-      throw new Error('Failed to fetch invoices.');
+      throw new Error('Failed to fetch products By Name.');
     }
   }
 

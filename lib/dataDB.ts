@@ -112,6 +112,28 @@ export async function fetchProducts() {
     }
   }
 
+  export async function fetchProductsPages(query: string) {
+    noStore();
+    try {
+      const count = await sql`SELECT COUNT(*)
+      FROM products
+        JOIN movies ON products.movie_id = movies.m_id
+        JOIN categories ON products.category_id = categories.c_id
+        WHERE
+        products.name ILIKE ${`%${query}%`} OR
+        movies.name ILIKE ${`%${query}%`} OR
+        categories.name ILIKE ${`%${query}%`}
+    `;
+  
+      const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+      console.log(totalPages);
+      return totalPages;
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch total number of invoices.');
+    }
+  }
+
 
   export async function fetchProductsImages() {
     noStore();

@@ -82,7 +82,7 @@ export async function fetchProducts() {
     }
     return ''
   }
-  const ITEMS_PER_PAGE = 6;
+  const ITEMS_PER_PAGE = 15;
   export async function fetchProductsByName(
     query: string,
     currentPage: number,
@@ -126,7 +126,6 @@ export async function fetchProducts() {
     `;
   
       const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
-      console.log(totalPages);
       return totalPages;
     } catch (error) {
       console.error('Database Error:', error);

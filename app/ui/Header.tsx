@@ -22,7 +22,7 @@ export const Header = () => {
         </Link>
         <nav className='gap-6 items-center mx-3  hidden text-black font-semibold lg:flex'>
           <Link href={"/products"}>Productos</Link>
-          <Link href={"/about"}>Oferta</Link>
+          <Link href={"/sale"}>Oferta</Link>
           <Link href={"/contact"}>Nuevos Arrivos</Link>
           <div className='flex h-10 lg:ml-auto max-lg:w-full'>
             <Search placeholder='Busca a Nemo...' />
@@ -37,7 +37,7 @@ export const Header = () => {
       {isMobileMenuOpen && (
         <div className='lg:hidden bg-white text-black p-4'>
           <Link href={"/products"} onClick={toggleMobileMenu} className='block py-2'>Productos</Link>
-          <Link href={"/about"} onClick={toggleMobileMenu} className='block py-2'>Oferta</Link>
+          <Link href={"/sale"} onClick={toggleMobileMenu} className='block py-2'>Oferta</Link>
           <Link href={"/contact"} onClick={toggleMobileMenu} className='block py-2'>Nuevos Arrivos</Link>
           <Link href={"/cart"} onClick={toggleMobileMenu} className='block py-2'>Carrito(0)</Link>
           <Link href={"/login"} onClick={toggleMobileMenu} className='block py-2 bg-secondary p-2 px-4 rounded-full text-white'>

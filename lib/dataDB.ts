@@ -84,7 +84,7 @@ export async function fetchProducts() {
   }
 
   const ITEMS_PER_PAGE = 8;
-  export async function fetchProductsByName(
+  export async function fetchFilteredProducts(
     query: string,
     currentPage: number,
   ) {

@@ -24,9 +24,6 @@ export const Header = () => {
           <Link href={"/products"}>Productos</Link>
           <Link href={"/sale"}>Oferta</Link>
           <Link href={"/contact"}>Nuevos Arrivos</Link>
-          <div className='flex h-10 lg:ml-auto max-lg:w-full'>
-            <Search placeholder='Busca a Nemo...' />
-          </div>
           <Link href={"/cart"}>Carrito(0)</Link>
           <Link href={"/login"} className='bg-secondary p-2 px-4 rounded-full text-white'>
             Login

@@ -22,7 +22,7 @@ export default async function ProductsWrapper({ query,currentPage}:{
                     image={findImage(product.p_id, images)}
                     description={product.description}
                     price={product.price}
-                    />       
+                />       
                 ))}
         </div>
     );

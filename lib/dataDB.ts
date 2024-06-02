@@ -104,6 +104,7 @@ export async function fetchProducts() {
         products.name ILIKE ${`%${query}%`} OR
         movies.name ILIKE ${`%${query}%`} OR
         categories.name ILIKE ${`%${query}%`}
+        LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
   
       return products.rows;

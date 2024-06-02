@@ -1,11 +1,9 @@
 import Banner from "../products/ui/Banner"
 
-export const Header = () => {
+export default async function Page () {
     return (
         <>
         <Banner image="/img/banner.png" title="Oferta" description="Descuentos de la semana"/>
         </>
     )
 }
-
-export default Header

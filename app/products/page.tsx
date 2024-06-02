@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Filter from './ui/Filter';
 import Card from '../ui/Card';
 import Banner from './ui/Banner';
@@ -29,7 +29,9 @@ export default async function Products({
     <div>
       <div className="md:flex h-full">
         <div className="">
+        <Suspense fallback={<div>Loading...</div>}>
           <Filter />
+        </Suspense>
         </div>
         <div className="flex flex-col flex-1">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-5 flex-grow">
@@ -45,8 +47,11 @@ export default async function Products({
             </div>
           ))}
         </div>
+          
           <div className="flex justify-center m-5">
+          <Suspense fallback={<div>Loading...</div>}>
             <Pagination totalPages={totalPages} />
+            </Suspense>
           </div>
         </div>
       </div>

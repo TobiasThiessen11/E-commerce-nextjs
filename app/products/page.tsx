@@ -35,6 +35,7 @@ export default async function Products({
         </div>
         <div className="flex flex-col flex-1">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-5 flex-grow">
+        <Suspense fallback={<div>Loading...</div>}>
           {productsFilter.map((product) => (
             <div key={product.p_id} className="flex-none">
               <Card
@@ -46,6 +47,7 @@ export default async function Products({
               />
             </div>
           ))}
+        </Suspense>
         </div>
           
           <div className="flex justify-center m-5">

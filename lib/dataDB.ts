@@ -171,3 +171,20 @@ export async function fetchProducts() {
         throw new Error('Failed to fetch most sold products.');
     }
 }
+
+export async function fetchLeastExpensiveProducts() {
+  try {
+      const products = await sql`
+      SELECT
+          p.*
+      FROM
+          Products p
+      ORDER BY
+          p.price ASC
+      LIMIT 8;`;
+      return products.rows;
+  } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch most sold products.');
+  }
+}

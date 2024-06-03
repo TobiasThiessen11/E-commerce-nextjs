@@ -24,9 +24,9 @@ export default async function Page({ params }: { params: { tittle: string } }) {
                   image={findImage(product.p_id, images)} 
                   description={product.description} 
                   price={product.price} 
-                  id={""} 
+                  id={product.p_id}
                   key={product.p_id} 
-                  {...product} />
+                  />
                 ))}
               </div>
             </div>

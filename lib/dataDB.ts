@@ -153,18 +153,18 @@ export async function fetchProducts() {
     try {
         const products = await sql`
         SELECT
-          p.*,
-          SUM(sd.quantity) AS total_sales
+            p.p_id,
+            p.*,
+            SUM(sd.quantity) AS total_sales
         FROM
-          SalesDetails sd
+            SalesDetails sd
         INNER JOIN
-          Products p ON sd.product_id = p.p_id
+            Products p ON sd.product_id = p.p_id
         GROUP BY
-          p.p_id
+            p.p_id, p.name 
         ORDER BY
-          total_sales DESC
+            total_sales DESC
         LIMIT 5`;
-
         return products.rows;
     } catch (error) {
         console.error('Database Error:', error);

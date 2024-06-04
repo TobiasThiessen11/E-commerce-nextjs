@@ -172,6 +172,27 @@ export async function fetchProducts() {
     }
 }
 
+export async function fetchProductByMovie(title: string) {
+  noStore();
+  try {
+    const products = await sql`
+    SELECT 
+      p.*
+    FROM 
+      products p
+    JOIN 
+      movies m ON p.movie_id = m.m_id
+    WHERE 
+      m.name ILIKE ${`%${title}%`}
+  `;
+    return products.rows
+    
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch Product By movie.');
+  }
+}
+
 export async function fetchLeastExpensiveProducts() {
   try {
       const products = await sql`
@@ -188,3 +209,5 @@ export async function fetchLeastExpensiveProducts() {
       throw new Error('Failed to fetch most sold products.');
   }
 }
+
+

@@ -1,4 +1,4 @@
-
+"use client"
 import React, { useContext } from 'react';
 import { Button } from "@/components/ui/button"
 import { Product } from '@/lib/definitions';

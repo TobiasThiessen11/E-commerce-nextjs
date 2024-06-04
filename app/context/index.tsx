@@ -7,7 +7,7 @@ interface CartItem {
     quantity: number;
 }
 
-const CartContext = createContext<any>(undefined);
+export const CartContext = createContext<any>(undefined);
 
 export function CartProvider({children} : {
     children: React.ReactNode;
@@ -49,6 +49,8 @@ export function CartProvider({children} : {
     const getCartTotal = () => {
         return cartItems.reduce((total: number, cartItem:CartItem) => total+ cartItem.price * cartItem.quantity, 0)
     }
+
+    const totalQuantity = cartItems.reduce((total: number, cartItem:CartItem) => total + cartItem.quantity, 0)
 
     useEffect( () => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));

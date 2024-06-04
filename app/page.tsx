@@ -42,7 +42,7 @@ export default function Home() {
         <h1 className="text-center w-full text-3xl m-2 font-bold sm:text-4xl md:text-5xl">Novedades</h1>
         <div className="flex items-center justify-center">
           <NewsCard image="/img/new1.png" title="Lo mas buscado" />
-          <NewsCard image="/img/new2.png" title="Las nuevas peliculas de este 2024" />
+          <NewsCard image="/img/new2.png" title="Exclusivos de Star Wars" />
         </div>
       </section>
 

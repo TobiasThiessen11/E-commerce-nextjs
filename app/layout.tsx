@@ -3,7 +3,7 @@ import { Darker_Grotesque } from "next/font/google";
 import "./globals.css";
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
-import { AppWrapper } from "./context";
+import {CartProvider } from "./context";
 
 const inter = Darker_Grotesque({ subsets: ["latin"] });
 
@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header/>
-        <AppWrapper>
+        <CartProvider>
         {children}
-        </AppWrapper>
+        </CartProvider>
         <Footer/>
         </body>
     </html>

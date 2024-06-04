@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { fetchImageByProductId, fetchProductById } from "@/lib/dataDB";
-import Image from "next/image"
-import ImageGallery from "react-image-gallery"
 import "react-image-gallery/styles/css/image-gallery.css";
 import MyGallery from "../ui/MyGallery";
 import notFound from "@/app/not-found";
+import AddCartButton from "../ui/AddCartButton";
 
 export default async function Page({ params }: { params: { p_id: string } }) {
     const id = params.p_id;
@@ -54,9 +53,8 @@ export default async function Page({ params }: { params: { p_id: string } }) {
                         </SelectContent>
                         </Select>
                     </div>
-                        <Button className="w-full" size="sm">
-                            Añadir al Carrito
-                        </Button>
+                        <AddCartButton product={product}/>
+                        
                         <Button className="w-full" size="sm">
                             COMPRAR
                         </Button>

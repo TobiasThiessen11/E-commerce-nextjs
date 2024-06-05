@@ -17,7 +17,7 @@ const computePrice = (price : number, quantity : number) => {
 export default function CardCart(item: CardCartProps) {
     const { removeFromCart } = useAppContext()
     return (
-        <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800">
+        <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-800 ml-4 m-2 mb-3">
         <div className="grid grid-cols-[1fr_3fr] gap-4">
           <div className="relative">
             {/* <Image

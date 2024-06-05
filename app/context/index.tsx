@@ -33,13 +33,13 @@ export function CartProvider({children} : {
         }
     }
 
-    const removeFromCart = (item: Product) => {
-        const isItemInCart = cartItems.find((cartItem:CartItem) => cartItem.id === item.p_id);
+    const removeFromCart = (item: any) => {
+        const isItemInCart = cartItems.find((cartItem:CartItem) => cartItem.id === item.id);
         if (isItemInCart?.quantity === 1){
-            setCartItems(cartItems.filter((cartItem:CartItem) => cartItem.id !== item.p_id));
+            setCartItems(cartItems.filter((cartItem:CartItem) => cartItem.id !== item.id));
         } else{
             setCartItems(cartItems.map((cartItem:CartItem) => 
-                        cartItem.id === item.p_id ? {...cartItem, quantity: cartItem.quantity - 1} : cartItem));
+                        cartItem.id === item.id ? {...cartItem, quantity: cartItem.quantity - 1} : cartItem));
         }
     }
 

@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext } from 'react';
+import React from 'react';
 import { Button } from "@/components/ui/button"
 import { Product } from '@/lib/definitions';
 import { useAppContext } from '@/app/context';

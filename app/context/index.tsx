@@ -1,9 +1,10 @@
 "use client"
+import { Product } from '@/lib/definitions';
 import {createContext, useState, useContext, useEffect} from 'react'
 
 interface CartItem {
     price: number;
-    id: number;
+    id: string;
     quantity: number;
 }
 
@@ -20,25 +21,25 @@ export function CartProvider({children} : {
         return [];
     });
 
-    const addToCart = (item: any) => {
-        const isItemInCart = cartItems.find((cartItem:CartItem) => cartItem.id === item.id);
+    const addToCart = (item: Product) => {
+        const isItemInCart = cartItems.find((cartItem:CartItem) => cartItem.id === item.p_id);
 
         if (isItemInCart){
             setCartItems(cartItems.map((cartItem:CartItem) => 
-                        cartItem.id === item.id ? {...cartItem, quantity: cartItem.quantity + 1} : cartItem))
+                        cartItem.id === item.p_id ? {...cartItem, quantity: cartItem.quantity + 1} : cartItem))
         }
         else {
-            setCartItems([...cartItems, {...item, quantity: 1}])
+            setCartItems([...cartItems, {...item, id: item.p_id, quantity: 1}])
         }
     }
 
-    const removeFromCart = (item: any) => {
-        const isItemInCart = cartItems.find((cartItem:CartItem) => cartItem.id === item.id);
+    const removeFromCart = (item: Product) => {
+        const isItemInCart = cartItems.find((cartItem:CartItem) => cartItem.id === item.p_id);
         if (isItemInCart?.quantity === 1){
-            setCartItems(cartItems.filter((cartItem:CartItem) => cartItem.id !== item.id));
+            setCartItems(cartItems.filter((cartItem:CartItem) => cartItem.id !== item.p_id));
         } else{
             setCartItems(cartItems.map((cartItem:CartItem) => 
-                        cartItem.id === item.id ? {...cartItem, quantity: cartItem.quantity - 1} : cartItem));
+                        cartItem.id === item.p_id ? {...cartItem, quantity: cartItem.quantity - 1} : cartItem));
         }
     }
 

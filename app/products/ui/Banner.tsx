@@ -26,7 +26,7 @@ const Banner: React.FC<Banner> = ({image,title,description}) => {
                 width={1202} 
                 height={1400} 
                 alt={title} 
-                className='hidden md:block ' 
+                className=' md:block ' 
             />
         </div>
     </div>

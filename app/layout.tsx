@@ -16,16 +16,19 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header/>
-        <CartProvider>
-        {children}
-        </CartProvider>
-        <Footer/>
-        </body>
-    </html>
-  );
-}
+}>) { return (
+  <html lang="en">
+    <body className={inter.className}>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">
+          <CartProvider>
+            {children}
+          </CartProvider>
+        </main>
+        <Footer />
+      </div>
+    </body>
+  </html>
+);
+};

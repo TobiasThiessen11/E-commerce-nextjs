@@ -1,4 +1,5 @@
 "use client"
+import { Button } from "@/components/ui/button"
 import { useAppContext } from "../context"
 import CardCart from "./ui/CardCart"
 import { useEffect, useState } from "react"
@@ -23,52 +24,27 @@ export default function Cart() {
     return null
   }
 
-  return (
-    <div>
-    <div className="flex flex-col ">
-      <h1 className="text-4xl font-bold text-center m-4 mb-1">Tu Carrito</h1>
-      {cartItems.length > 0 ?<h1 className="text-2xl text-center mb-3 ">Tu carrito tiene los siguientes productos</h1> 
-        : <h1 className="text-2xl text-center mb-3 ">El carrito está vacío</h1>}
-    </div>
-    <div className="grid grid-cols-2">
-      <div>
-      {cartItems.length > 0 ? (
-      <>
-        {cartItems.map((item: Item) => (
-          <CardCart 
-            key={item.id}
-            name={item.name} 
-            description={item.description} 
-            price={item.price} 
-            quantity={item.quantity} 
-            id={item.id}
-          />
-        ))}
-        
-      </>
-    ) : null}
+ return (
+    <section className="w-full">
+      <div className="container px-4 md:px-6 text-center">
+        <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">Tu Carrito</h1>
+        {cartItems.length > 0 ?<h1 className="text-2xl text-center ">Tu carrito tiene los siguientes productos</h1> : <h1 className="text-2xl text-center ">El carrito está vacío</h1>}
       </div>
-    <div>
-    <div className="flex flex-col justify-between items-center">
-          <h1 className="text-lg font-bold">Este es el resumen de tu carrito:</h1>
-          <h1 className="text-lg font-bold">Total: ${getCartTotal()}</h1>
-          <button
-            className="px-4 py-2 bg-gray-800 text-white text-xs m-4 font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-            onClick={clearCart}
-          >
-            Limpiar el carrito
-          </button>
-          <button
-            className="px-6 py-6 bg-gray-800 text-white text-lg m-4 font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-            onClick={clearCart}
-          >
-            Procesar Pago
-          </button>
+      <div className="container grid md:grid-cols-2 gap-8 px-4 md:px-6 mt-12">
+        <div className="grid gap-6">
+          {cartItems.map((item: Item) => (
+            <CardCart key={item.id} {...item} />
+          ))}
         </div>
-    </div>
-    </div>
-    </div>
-
+        <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 grid h-min-160">
+          <div className="flex items-center justify-between">
+            <p className="text-gray-500 text-4xl dark:text-gray-400">Subtotal:</p>
+            <p className=" text-4xl">${getCartTotal()}</p>
+          </div>
+            <Button size="lg">Procesar pago</Button>
+            <Button variant="outline" size="sm" onClick={clearCart}> Eliminar Carrito</Button>
+        </div>
+      </div>
+    </section>
   )
-
 }

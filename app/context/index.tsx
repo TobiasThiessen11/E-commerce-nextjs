@@ -48,7 +48,7 @@ export function CartProvider({children} : {
     }
 
     const getCartTotal = () => {
-        return cartItems.reduce((total: number, cartItem:CartItem) => total+ cartItem.price * cartItem.quantity, 0)
+        return cartItems.reduce((total: number, cartItem:CartItem) => total+ cartItem.price * cartItem.quantity, 0).toFixed(2)
     }
 
     const totalQuantity = cartItems.reduce((total: number, cartItem:CartItem) => total + cartItem.quantity, 0)

@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import {Menu } from 'lucide-react'
-import Search from './Search'
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -24,7 +23,7 @@ export const Header = () => {
           <Link href={"/products"}>Productos</Link>
           <Link href={"/sale"}>Oferta</Link>
           <Link href={"/contact"}>Nuevos Arrivos</Link>
-          <Link href={"/cart"}>Carrito(0)</Link>
+          <Link href={"/cart"}>Carrito</Link>
           <Link href={"/login"} className='bg-secondary p-2 px-4 rounded-full text-white'>
             Login
           </Link>

@@ -37,27 +37,7 @@ export default async function Page({ params }: { params: { p_id: string } }) {
                     </div>
                     <div className="text-4xl font-bold">$ {product.price}</div>
                     <form className="grid gap-4 ">
-                    <div className="grid">
-                        <span className="text-gray-500">Cantidad</span>
-                        
-                        <Select defaultValue="1">
-                        <SelectTrigger className="w-24">
-                            <SelectValue placeholder="Select" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="1">1</SelectItem>
-                            <SelectItem value="2">2</SelectItem>
-                            <SelectItem value="3">3</SelectItem>
-                            <SelectItem value="4">4</SelectItem>
-                            <SelectItem value="5">5</SelectItem>
-                        </SelectContent>
-                        </Select>
-                    </div>
                         <AddCartButton product={product}/>
-                        
-                        <Button className="w-full" size="sm">
-                            COMPRAR
-                        </Button>
                     </form>
                         
                     </div>

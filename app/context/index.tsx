@@ -51,7 +51,7 @@ export function CartProvider({children} : {
         return cartItems.reduce((total: number, cartItem:CartItem) => total+ cartItem.price * cartItem.quantity, 0).toFixed(2)
     }
 
-    const totalQuantity = cartItems.reduce((total: number, cartItem:CartItem) => total + cartItem.quantity, 0)
+    const getCartQuantity = () => { return cartItems.reduce((total: number, cartItem:CartItem) => total + cartItem.quantity, 0)}
 
     useEffect( () => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));

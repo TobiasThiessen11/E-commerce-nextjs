@@ -17,7 +17,7 @@ function AddCartButton({product}: ButtonProps) {
 
     return( 
         <Button onClick={() => handleClick()} className='w-full'>
-        Add to cart
+        Añadir al carrito
         </Button>
     );
 };

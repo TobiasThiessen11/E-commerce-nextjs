@@ -74,11 +74,12 @@ export default function Cart() {
             <p className="text-gray-500 text-4xl dark:text-gray-400">Subtotal:</p>
             <p className="text-4xl">${getCartTotal()}</p>
           </div>
-          <div className="mt-auto grid grid-cols-2 gap-2">
+          <div className="mt-auto grid grid-cols-2 gap-2 w-full">
             <Button disabled={cartItems.length === 0} size="lg" onClick={handleClick} >Procesar pago</Button>
             <Button disabled={cartItems.length === 0} variant="outline" size="lg" onClick={clearCart}>Eliminar Carrito</Button>
-            <div>
-            {preferenceId && <Wallet initialization={{ preferenceId }} />}
+            {preferenceId && <Wallet initialization={{ preferenceId }} />}  
+          <div>
+            
       </div>
           </div>
       </div>

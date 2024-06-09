@@ -9,18 +9,10 @@ const client = new MercadoPagoConfig({ accessToken: "TEST-5113519851838077-06061
 export async function POST(request: NextRequest) {
   try {
     const { items } = await request.json();
-    console.log(items);
-
     if (!items || items.length === 0) {
       return NextResponse.json({ message: 'No items provided' }, { status: 400 });
     }
 
-    for (const item of items) {
-      if (typeof item.name !== 'string' || typeof item.quantity !== 'number' || isNaN(Number(item.price))) {
-        return NextResponse.json({ message: 'Invalid item structure' }, { status: 400 });
-      }
-    }
-    
     const preference = new Preference(client);
 
     const response = await preference.create({

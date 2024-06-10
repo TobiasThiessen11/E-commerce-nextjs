@@ -2,9 +2,9 @@ import React, { Suspense } from 'react';
 import Filter from './ui/Filter';
 import { fetchProductsPages} from '@/lib/dataDB';
 import Pagination from './ui/Pagination';
-import ProductSkeleton from './ui/ProductSkeleton';
 import ProductsWrapper from './ui/ProductsWrapper';
 import Search from '../ui/Search';
+import ProductSkeleton from './ui/ProductSkeleton';
 
 export default async function Products({searchParams,
 }: {

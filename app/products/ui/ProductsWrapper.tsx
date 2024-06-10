@@ -13,7 +13,7 @@ export default async function ProductsWrapper({ query,currentPage}:{
     const images: ProductImage[] = await fetchProductsImages();
     if (!images) return notFound();
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-5 flex-grow">
+       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-5 ">
             {productsFilter.map((product) => (
                 <Card
                     key={product.p_id}
@@ -22,8 +22,8 @@ export default async function ProductsWrapper({ query,currentPage}:{
                     image={findImage(product.p_id, images)}
                     description={product.description}
                     price={product.price}
-                />       
-                ))}
+                />
+            ))}
         </div>
     );
 }

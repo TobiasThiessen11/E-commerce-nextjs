@@ -128,7 +128,6 @@ export async function fetchProducts() {
 
     `;
       const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
-      console.log("totalPages", totalPages)
       return totalPages;
     } catch (error) {
       console.error('Database Error:', error);

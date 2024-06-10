@@ -14,6 +14,7 @@ export default function Filter() {
         "Peluches",
         "Juguetes",
         "Coleccionables",
+        "Tecnologia",
         "Otro",
     ];  
 

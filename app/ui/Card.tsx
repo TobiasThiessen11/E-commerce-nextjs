@@ -13,7 +13,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ name, image, description, price, id }) => {
   return (
-    <div className="relative rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 ease-in-out md:hover:-translate-y-2 cursor-pointer bg-neutral">
+    <div className="rounded-lg shadow-md hover:shadow-xl transition-transform duration-300 ease-in-out md:hover:-translate-y-2 cursor-pointer bg-neutral">
       <Link href={`/product/${id}`}>
       <Image
         src={image}

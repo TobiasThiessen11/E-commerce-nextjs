@@ -1,11 +1,10 @@
-'use server'
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
 import { z } from 'zod';
 import { sql } from '@vercel/postgres';
-import type { User } from '@/lib/definitions'
 import bcrypt from 'bcryptjs';
+import type { User } from './lib/definitions';
  
 async function getUser(email: string): Promise<User | undefined> {
   try {
@@ -23,7 +22,7 @@ export const { auth, signIn, signOut } = NextAuth({
     Credentials({
       async authorize(credentials) {
         const parsedCredentials = z
-          .object({ email: z.string().email(), password: z.string()})
+          .object({ email: z.string().email(), password: z.string().min(3) })
           .safeParse(credentials);
  
           if (parsedCredentials.success) {
@@ -32,15 +31,12 @@ export const { auth, signIn, signOut } = NextAuth({
             if (!user) return null;
             const passwordsMatch = await bcrypt.compare(password, user.password);
    
-            if (passwordsMatch){
-              console.log('LOGEADO CORRECTAMENTE', user.name, user.email, user.password);
-              return user;
-            }
+            if (passwordsMatch) return user;
           }
    
           console.log('Invalid credentials');
           return null;
-        },
-      }),
-    ],
-  });
+      },
+    }),
+  ],
+});

@@ -2,7 +2,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button';
 import { useFormState, useFormStatus } from 'react-dom';
-import { authenticate } from '@/lib/actions';
+import { authenticate } from '@/app/lib/actions';
 
 export default function Page(){
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);

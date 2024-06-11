@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import {CartProvider } from "./context";
+import HeaderLogin from "./ui/HeaderLogin";
 
 const inter = Darker_Grotesque({ subsets: ["latin"] });
 
@@ -20,7 +21,7 @@ export default function RootLayout({
   <html lang="en">
     <body className={inter.className}>
       <div className="flex flex-col min-h-screen">
-        <Header />
+        <Header/>
         <main className="flex-grow">
           <CartProvider>
             {children}

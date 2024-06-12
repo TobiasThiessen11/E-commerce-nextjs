@@ -131,7 +131,7 @@ export async function fetchProducts() {
       return totalPages;
     } catch (error) {
       console.error('Database Error:', error);
-      throw new Error('Failed to fetch total number of invoices.');
+      throw new Error('Failed to fetch total number of products.');
     }
   }
 
@@ -209,7 +209,7 @@ export async function fetchLeastExpensiveProducts() {
   }
 }
 
-export async function deleteInvoice(id: string) {
+export async function deleteProduct(id: string) {
   try {
     await sql`DELETE FROM products WHERE p_id = ${id}`;
     revalidatePath('/admin');

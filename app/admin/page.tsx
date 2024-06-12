@@ -5,6 +5,8 @@ import { Button} from "@nextui-org/react";
 import { handleSignOut } from "../lib/actions";
 import Table from "./ui/Table";
 import { fetchProductsPages } from "@/lib/dataDB";
+import Pagination from "../products/ui/Pagination";
+import Search from "../ui/Search";
 
 export default async function Page({
   searchParams,
@@ -16,7 +18,8 @@ export default async function Page({
 }) {
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
-
+  console.log("query", query)
+  console.log("currentPage", currentPage)
   const totalPages = await fetchProductsPages(query);
   
   return (
@@ -30,7 +33,7 @@ export default async function Page({
         </form>
       </div>
       <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-xl font-bold mb-4">Agregar nuevo producto</h2>
+        <h2 className="text-2xl font-bold mb-4">Agregar nuevo producto</h2>
         <div className="grid grid-cols-2 gap-6">
           <div>
             <Label htmlFor="name">Nombre</Label>
@@ -64,7 +67,13 @@ export default async function Page({
       </div>
       <div className="bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-bold mb-4">All Products</h2>
+        <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
+          <Search placeholder="Search products..." />
+        </div>
         <Table query={query} currentPage={currentPage}/>
+        <div className="mt-5 flex w-full justify-center">
+        <Pagination totalPages={totalPages} />
+      </div>
       </div>
     </div>
   )

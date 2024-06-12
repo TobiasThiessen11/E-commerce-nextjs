@@ -1,7 +1,8 @@
 import { fetchFilteredProducts } from '@/lib/dataDB';
 import Image from 'next/image';
 import ProductStatus from './ProductStatus';
-import { DeleteInvoice, UpdateInvoice } from './Buttons';
+import { shortenString } from '@/lib/utils';
+import { DeleteProduct, UpdateProduct } from './Buttons';
 
 export default async function Table({
   query,
@@ -11,6 +12,7 @@ export default async function Table({
   currentPage: number;
 }) {
   const products = await fetchFilteredProducts(query, currentPage);
+
 
   return (
     <div className="mt-6 flow-root">
@@ -25,13 +27,6 @@ export default async function Table({
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
                     <div className="mb-2 flex items-center">
-                      {/* <Image
-                        src={product.}
-                        className="mr-2 rounded-full"
-                        width={28}
-                        height={28}
-                        alt={`${invoice.name}'s profile picture`}
-                      /> */}
                       <p>{product.name}</p>
                     </div>
                     <p className="text-sm text-gray-500">{product.p_id}</p>
@@ -45,8 +40,8 @@ export default async function Table({
                     </p>
                   </div>
                   <div className="flex justify-end gap-2">
-                    <UpdateInvoice id={product.p_id} />
-                    <DeleteInvoice id={product.p_id} />
+                    <UpdateProduct id={product.p_id} />
+                    <DeleteProduct id={product.p_id} />
                   </div>
                 </div>
               </div>
@@ -56,16 +51,19 @@ export default async function Table({
             <thead className="rounded-lg text-left text-sm font-normal">
               <tr>
                 <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                  Customer
+                  Producto
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Email
+                  Descripcion
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Amount
+                  Precio unitario
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Date
+                  Movie-id
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Category-id
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Status
@@ -94,21 +92,24 @@ export default async function Table({
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {product.description}
+                    {shortenString(product.description)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {product.price}
                   </td>
-                  {/* <td className="whitespace-nowrap px-3 py-3">
-                    {formatDateToLocal(invoice.date)}
-                  </td> */}
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {product.movie_id}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {product.category_id}
+                  </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     <ProductStatus status={product.state} />
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
-                    <UpdateInvoice id={product.p_id} />
-                    <DeleteInvoice id={product.p_id} />
+                    <UpdateProduct id={product.p_id} />
+                    <DeleteProduct id={product.p_id} />
                     </div>
                   </td>
                 </tr>

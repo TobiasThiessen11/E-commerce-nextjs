@@ -51,3 +51,12 @@ export type User = {
     product_id : string;
   };
   
+  export type ProductForm = {
+    p_id: string;
+    name: string;
+    price: number;
+    description: string;
+    state : '0'|'1'; // ---> REVISAR
+    movie_id  : string;
+    category_id : string;
+  };

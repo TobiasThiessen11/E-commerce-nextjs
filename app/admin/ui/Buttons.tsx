@@ -25,16 +25,3 @@ export function UpdateProduct({ id }: { id: string }) {
     </Link>
   );
 }
-
-export function DeleteProduct({ id }: { id: string }) {
-    const deleteProductById = deleteProduct.bind(null, id);
- 
-  return (
-    <form action={deleteProductById}>
-      <button className="rounded-md border p-2 hover:bg-gray-100">
-        <span className="sr-only">Delete</span>
-        <TrashIcon className="w-4" />
-      </button>
-    </form>
-  );
-}

@@ -1,4 +1,3 @@
-"use client"
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button} from "@nextui-org/react";
@@ -8,8 +7,7 @@ import { fetchProductsPages } from "@/lib/dataDB";
 import Pagination from "../products/ui/Pagination";
 import Search from "../ui/Search";
 
-export default async function Page({
-  searchParams,
+export default async function Admin({searchParams,
 }: {
   searchParams?: {
     query?: string;

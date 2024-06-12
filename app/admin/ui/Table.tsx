@@ -2,7 +2,7 @@ import { fetchFilteredProducts } from '@/lib/dataDB';
 import Image from 'next/image';
 import ProductStatus from './ProductStatus';
 import { shortenString } from '@/lib/utils';
-import { DeleteProduct, UpdateProduct } from './Buttons';
+import { UpdateProduct } from './Buttons';
 
 export default async function Table({
   query,
@@ -41,7 +41,6 @@ export default async function Table({
                   </div>
                   <div className="flex justify-end gap-2">
                     <UpdateProduct id={product.p_id} />
-                    <DeleteProduct id={product.p_id} />
                   </div>
                 </div>
               </div>
@@ -81,13 +80,7 @@ export default async function Table({
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex items-center gap-3">
-                      {/* <Image
-                        src={product.image_url}
-                        className="rounded-full"
-                        width={28}
-                        height={28}
-                        alt={`${invoice.name}'s profile picture`}
-                      /> */}
+
                       <p>{product.name}</p>
                     </div>
                   </td>
@@ -109,7 +102,6 @@ export default async function Table({
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                     <UpdateProduct id={product.p_id} />
-                    <DeleteProduct id={product.p_id} />
                     </div>
                   </td>
                 </tr>

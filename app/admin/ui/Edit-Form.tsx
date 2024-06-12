@@ -79,9 +79,6 @@ export default function EditInvoiceForm({
                   className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-lg outline-2 placeholder:text-gray-500"
                 defaultValue={product.movie_id}
               >
-                <option value="" disabled>
-                  Selecciona la pelicula
-                </option>
                 {movies.map((movie) => (
                   <option key={movie.m_id} value={movie.m_id}>
                     {movie.name}
@@ -98,11 +95,8 @@ export default function EditInvoiceForm({
                 id="customer"
                 name="customerId"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-lg outline-2 placeholder:text-gray-500"
-                defaultValue={product.movie_id}
+                defaultValue={product.category_id}
               >
-                <option value="" disabled>
-                  Selecciona la categoria
-                </option>
                 {categories.map((category) => (
                   <option key={category.c_id} value={category.c_id}>
                     {category.name}

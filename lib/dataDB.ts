@@ -219,3 +219,44 @@ export async function deleteProduct(id: string) {
   }
 }
 
+export async function fetchMovieNameById(id:string) {
+  try {
+    const movie = await sql`
+      SELECT
+        name
+      FROM
+        Movies m
+      WHERE
+        m.m_id = ${id};`;
+    
+    if (movie.rows.length === 0) {
+      throw new Error('Movie not found');
+    }
+
+    return movie.rows[0].name;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch movie name.');
+  }
+}
+
+export async function fetchCategoryNameById(id:string) {
+  try {
+    const category = await sql`
+      SELECT
+        c.name
+      FROM
+        Categories c
+      WHERE
+        c.c_id = ${id};`;
+    
+    if (category.rows.length === 0) {
+      throw new Error('Category not found');
+    }
+
+    return category.rows[0].name;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch category name.');
+  }
+}

@@ -1,4 +1,4 @@
-import { fetchFilteredProducts } from '@/lib/dataDB';
+import { fetchCategoryNameById, fetchFilteredProducts, fetchMovieNameById } from '@/lib/dataDB';
 import Image from 'next/image';
 import ProductStatus from './ProductStatus';
 import { shortenString } from '@/lib/utils';
@@ -12,7 +12,7 @@ export default async function Table({
   currentPage: number;
 }) {
   const products = await fetchFilteredProducts(query, currentPage);
-
+  
 
   return (
     <div className="mt-6 flow-root">
@@ -59,10 +59,10 @@ export default async function Table({
                   Precio unitario
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Movie-id
+                  Pelicula
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Category-id
+                  Categoria
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Status
@@ -91,10 +91,10 @@ export default async function Table({
                     {product.price}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {product.movie_id}
+                    {fetchMovieNameById(product.movie_id)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {product.category_id}
+                  {fetchCategoryNameById(product.category_id)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     <ProductStatus status={product.state} />

@@ -3,8 +3,21 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button} from "@nextui-org/react";
 import { handleSignOut } from "../lib/actions";
+import Table from "./ui/Table";
+import { fetchProductsPages } from "@/lib/dataDB";
 
-export default function Page(){
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+
+  const totalPages = await fetchProductsPages(query);
   
   return (
     <div className="container mx-auto py-8">
@@ -51,7 +64,7 @@ export default function Page(){
       </div>
       <div className="bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-bold mb-4">All Products</h2>
-    
+        <Table query={query} currentPage={currentPage}/>
       </div>
     </div>
   )

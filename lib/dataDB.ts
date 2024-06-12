@@ -1,6 +1,6 @@
 import { sql } from '@vercel/postgres';
 import {User, Product, Category, ProductImage, Movie, Sale, SaleDetail} from '../lib/definitions';
-import { unstable_noStore as noStore } from 'next/cache';
+import { unstable_noStore as noStore, revalidatePath } from 'next/cache';
 
 export async function fetchProducts() {
     noStore();
@@ -209,4 +209,13 @@ export async function fetchLeastExpensiveProducts() {
   }
 }
 
+export async function deleteInvoice(id: string) {
+  try {
+    await sql`DELETE FROM products WHERE p_id = ${id}`;
+    revalidatePath('/admin');
+    return { message: 'Deleted Invoice.' };
+  } catch (error) {
+    return { message: 'Database Error: Failed to Delete Invoice.' };
+  }
+}
 

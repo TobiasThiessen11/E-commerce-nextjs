@@ -13,7 +13,7 @@ export default function Breadcrumbs({
   breadcrumbs: Breadcrumb[];
 }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-3 px-16 block">
+    <nav aria-label="Breadcrumb" className="mb-3 mx-56 block">
       <ol className={clsx( 'flex text-xl md:text-2xl')}>
         {breadcrumbs.map((breadcrumb, index) => (
           <li

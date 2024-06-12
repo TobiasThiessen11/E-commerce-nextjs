@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { fetchProductById, fetchProducts } from '@/lib/dataDB';
+import { fetchCategories, fetchMovies, fetchProductById, fetchProducts } from '@/lib/dataDB';
 import Form from '@/app/admin/ui/Edit-Form'
 import Breadcrumbs from '../../ui/Breadcrumbs';
  
@@ -12,6 +12,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     const id = params.id;
 
     const product = await fetchProductById(id);
+    const movies = await fetchMovies();
+    const categories = await fetchCategories();
     if (!product) {
         notFound();
       }
@@ -28,7 +30,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             },
             ]}
         />
-        <Form product={product} />
+        <Form product={product} movies={movies} categories={categories} />
         </main>
     );
 }

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import Filter from './ui/Filter';
-import { fetchProductsPages} from '@/lib/dataDB';
+import { fetchActiveProductsPages} from '@/lib/dataDB';
 import Pagination from './ui/Pagination';
 import ProductsWrapper from './ui/ProductsWrapper';
 import Search from '../ui/Search';
@@ -15,7 +15,7 @@ export default async function Products({searchParams,
 }) {
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
-  const totalPages = await fetchProductsPages(query);
+  const totalPages = await fetchActiveProductsPages(query);
   
   return (
     <div>

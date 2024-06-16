@@ -1,13 +1,13 @@
 import notFound from "@/app/not-found";
 import Card from "@/app/ui/Card";
-import { fetchFilteredProducts, fetchProductsImages, findImage } from "@/lib/dataDB";
+import { fetchActiveFilteredProducts, fetchFilteredProducts, fetchProductsImages, findImage } from "@/lib/dataDB";
 import { ProductImage } from "@/lib/definitions";
 
 export default async function ProductsWrapper({ query,currentPage}:{
     query: string;
     currentPage: number
 }) {
-    const productsFilter = await fetchFilteredProducts(query, currentPage);
+    const productsFilter = await fetchActiveFilteredProducts(query, currentPage);
     if (!productsFilter) return notFound();
     
     const images: ProductImage[] = await fetchProductsImages();

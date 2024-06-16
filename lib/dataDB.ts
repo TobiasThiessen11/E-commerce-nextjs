@@ -114,6 +114,59 @@ export async function fetchProducts() {
     }
   }
 
+  export async function fetchActiveFilteredProducts(
+    query: string,
+    currentPage: number,
+  ) {
+    noStore();
+    const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  
+    try {
+      const products = await sql<Product>`
+      SELECT
+        products.*,
+        movies.name AS movie_title,
+        categories.name AS category_name
+        FROM products
+        JOIN movies ON products.movie_id = movies.m_id
+        JOIN categories ON products.category_id = categories.c_id
+        WHERE
+        (products.name ILIKE ${`%${query}%`} OR
+        movies.name ILIKE ${`%${query}%`} OR
+        categories.name ILIKE ${`%${query}%`})
+        AND products.state = B'1'
+        LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
+      `;
+  
+      return products.rows;
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch products By Name.');
+    }
+  }
+  
+
+  export async function fetchActiveProductsPages(query: string) {
+    noStore();
+    try {
+      const count = await sql` SELECT COUNT(*)
+      FROM products
+      JOIN movies ON products.movie_id = movies.m_id
+      JOIN categories ON products.category_id = categories.c_id
+      WHERE
+          products.name ILIKE ${`%${query}%`} OR
+          movies.name ILIKE ${`%${query}%`} OR
+          categories.name ILIKE ${`%${query}%`} AND products.state = B'1'
+
+    `;
+      const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+      return totalPages;
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch total number of products.');
+    }
+  }
+
   export async function fetchProductsPages(query: string) {
     noStore();
     try {

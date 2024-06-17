@@ -1,14 +1,15 @@
-"use client";
+"use client"
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React from 'react'
+import React, { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
-
 
 export default function Filter() {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
     
+    const [isExpanded, setIsExpanded] = useState(false); // Estado para controlar la visibilidad en móviles
+
     const categories = [
         "Todos",
         "Peluches",
@@ -25,10 +26,12 @@ export default function Filter() {
         "Toy Story",
         "Wall-E",
         "Tarzan",
-        "La era del Hielo"
+        "La era del Hielo",
+        "Mickey Mouse",
     ]; 
 
     const handleSearch = useDebouncedCallback((term) => {
+        toggleFilters();
         const params = new URLSearchParams(searchParams);
         params.set('page', '1');
         if (term) {
@@ -38,9 +41,14 @@ export default function Filter() {
         }
         replace(`${pathname}?${params.toString()}`);
       }, 300);
+
+    const toggleFilters = () => {
+        setIsExpanded(!isExpanded);
+    };
+
     return (
-        <div className="md:flex flex-col md:flex-row gap-8  md:p-5  ">
-            <div className='bg-neutral rounded-lg shadow-xl p-6 md:w-64 space-y-6'>
+        <div className="md:flex flex-col md:flex-row gap-8 md:p-5">
+            <div className={`bg-neutral rounded-lg shadow-xl p-6 md:w-64 space-y-6 ${isExpanded ? 'block' : 'hidden md:block'}`}>
                 <div className='flex flex-col text-center'>
                     <h1 className='text-3xl font-bold'>CATEGORIAS</h1>
                     {categories.map((category) => (
@@ -67,9 +75,16 @@ export default function Filter() {
                     ))}
                 </div>
             </div>
+
+            {/* Botón para expandir/recolapsar en móviles */}
+            <div className="md:hidden text-center mt-4">
+                <button
+                    className="bg-secondary  text-white py-2 px-4 rounded-lg"
+                    onClick={toggleFilters}
+                >
+                    {isExpanded ? 'Cerrar Filtros' : 'Abrir Filtros'}
+                </button>
+            </div>
         </div>
-        
-    )
+    );
 }
-
-

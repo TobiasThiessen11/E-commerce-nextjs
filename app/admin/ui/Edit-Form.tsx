@@ -113,10 +113,10 @@ export default function EditProductForm({
               <div className="flex gap-4">
                 <div className="flex items-center">
                   <input
-                    id="pending"
+                    id="active"
                     name="state"
                     type="radio"
-                    value="pending"
+                    value="1"
                     defaultChecked={product.state === '1'}
                     className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
                   />
@@ -129,10 +129,10 @@ export default function EditProductForm({
                 </div>
                 <div className="flex items-center">
                   <input
-                    id="paid"
+                    id="inactive"
                     name="state"
                     type="radio"
-                    value="paid"
+                    value="0"
                     defaultChecked={product.state === '0'}
                     className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
                   />

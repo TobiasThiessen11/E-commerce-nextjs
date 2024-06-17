@@ -30,12 +30,13 @@ export default function Cart() {
 
   const handleClick = async () => {
     try {
+      const email = prompt('Por favor, ingrese su email:');
       const response = await fetch('/api/create-preference', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ items: cartItems }),
+        body: JSON.stringify({ items: cartItems, email }),
       });
       const data = await response.json();
       setPreferenceId(data.preferenceId);
@@ -78,12 +79,8 @@ export default function Cart() {
             <Button disabled={cartItems.length === 0} size="lg" onClick={handleClick} >Procesar pago</Button>
             <Button disabled={cartItems.length === 0} variant="outline" size="lg" onClick={clearCart}>Eliminar Carrito</Button>
             {preferenceId && <Wallet initialization={{ preferenceId }} />}  
-          <div>
-            
-      </div>
           </div>
-      </div>
-
+        </div>
       </div>
     </section>
   )

@@ -29,39 +29,6 @@ export default async function Admin({searchParams,
           </button>
         </form>
       </div>
-      {/* <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h2 className="text-2xl font-bold mb-4">Agregar nuevo producto</h2>
-        <div className="grid grid-cols-2 gap-6">
-          <div>
-            <Label htmlFor="name">Nombre</Label>
-            <Input id="name" name="name" className="w-full" />
-          </div>
-          <div>
-            <Label htmlFor="description">Descripción</Label>
-            <Input
-              id="description"
-              name="description"
-              className="w-full"
-            />
-          </div>
-          <div>
-            <Label htmlFor="price">Precio</Label>
-            <Input
-              id="price"
-              name="price"
-              type="number"
-              className="w-full"
-            />
-          </div>
-          <div>
-            <Label htmlFor="image">Imagen</Label>
-            <Input id="image" name="image" type="file" className="w-full" />
-          </div>
-        </div>
-        <div className="mt-6 text-right">
-          <Button className="bg-gray-600 text-white rounded-full">Add Product</Button>
-        </div>
-      </div> */}
       <CreateProduct />
       <div className="bg-white rounded-lg shadow-md p-6 ">
         <h2 className="text-xl font-bold mb-4">Todos los productos</h2>

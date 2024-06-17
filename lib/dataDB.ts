@@ -136,6 +136,7 @@ export async function fetchProducts() {
         products.name ILIKE ${`%${query}%`} OR
         movies.name ILIKE ${`%${query}%`} OR
         categories.name ILIKE ${`%${query}%`}
+        AND products.state = B'1'
         LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
   
@@ -191,7 +192,7 @@ export async function fetchProducts() {
           categories.name ILIKE ${`%${query}%`} AND products.state = B'1'
 
     `;
-      const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+      const totalPages = Math.floor(Number(count.rows[0].count) / ITEMS_PER_PAGE);
       return totalPages;
     } catch (error) {
       console.error('Database Error:', error);

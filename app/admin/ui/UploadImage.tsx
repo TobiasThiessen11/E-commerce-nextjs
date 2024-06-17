@@ -10,9 +10,9 @@ export default function UploadImage() {
             uploadPreset="ml_default"
             onSuccess={(result, { widget }) => {
               
-              const asset_id = result?.info?.asset_id ?? '';
-              const secure_url = result?.info?.secure_url ?? '';
-              uploadImages(asset_id, secure_url);
+              // const asset_id = result?.info?.asset_id ?? '';
+              // const secure_url = result?.info?.secure_url ?? '';
+              // uploadImages(asset_id, secure_url);
               widget.close();
             }}
           >

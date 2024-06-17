@@ -1,10 +1,12 @@
 'use client';
-import { createProduct } from '@/lib/dataDB';
+import { createProduct, uploadImages } from '@/lib/dataDB';
 import { Movie,Category } from '@/lib/definitions';
 import { Button } from '@nextui-org/react';
 import { CheckIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useFormState } from 'react-dom';
+import { CldUploadWidget } from 'next-cloudinary';
+import { useState } from 'react';
 
 
 export default function Form({ movies, categories }: { movies:Movie[], categories:Category[] }) {
@@ -139,8 +141,9 @@ export default function Form({ movies, categories }: { movies:Movie[], categorie
         >
           Cancel
         </Link>
-        <Button className='border-2 rounded-lg' type="submit">Añadir el producto</Button>
+        <Button className='border-2 p-2 rounded-lg' type="submit">Añadir el producto</Button>
       </div>
+
     </form>
 );
 }

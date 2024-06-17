@@ -439,3 +439,25 @@ export async function createProduct(
     message: 'Product created successfully.', 
   };
 }
+
+export async function uploadImages(
+  product_id: string,
+ asset_id: string,
+ url: string
+) { 
+  try {
+    await sql`
+      INSERT INTO productsImages (product_id, image_url)
+      VALUES (
+        ${asset_id},
+        ${url}
+      )
+    `;
+  } catch (error) {
+    console.error('Database Error:', error);
+    return {
+      errors: {},
+      message: 'Database Error: Failed to Create Product.',
+    };
+  }
+}

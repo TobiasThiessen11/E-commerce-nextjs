@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { ProductImage } from "./definitions";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -44,3 +45,12 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export function findImage(p_id: string, images: ProductImage[]): string {
+  for (let i = 0; i < images.length; i++) {
+    if (images[i].product_id === p_id) {
+      return images[i].image_url
+    }
+  }
+  return ''
+}

@@ -1,8 +1,9 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import React from 'react'
 import Card from './Card'
-import { fetchLeastExpensiveProducts, fetchProducts, fetchProductsImages, findImage } from '@/lib/dataDB';
+import { fetchLeastExpensiveProducts, fetchProducts, fetchProductsImages } from '@/lib/dataDB';
 import { ProductImage } from '@/lib/definitions';
+import { findImage } from '@/lib/utils';
 
 export default async function ProductsCarousel() {
     const products = await fetchLeastExpensiveProducts();

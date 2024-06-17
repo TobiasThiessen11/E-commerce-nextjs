@@ -1,6 +1,47 @@
+"use server";
 import { sql } from '@vercel/postgres';
 import {User, Product, Category, ProductImage, Movie, Sale, SaleDetail} from '../lib/definitions';
 import { unstable_noStore as noStore, revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import {z} from 'zod';
+
+
+type State = {
+  errors: {
+    category_id?: string[];
+    movie_id?: string[];
+    price?: string[];
+    state?: string[];
+    name?: string[];
+    description?: string[];
+  };
+  message: string | null;
+};
+
+const FormSchema = z.object({
+  p_id: z.string(),
+  category_id: z.string({
+    invalid_type_error: 'Por favor seleccione una categoria.',
+  }),
+  movie_id: z.string({
+    invalid_type_error: 'Por favor selecciona una pelicula.',
+  }),
+  price: z.coerce
+    .number()
+    .gt(0, { message: 'Por favor ingrese un valor mayor a $0.' }),
+  state: z.enum(['1', '0'], {
+    invalid_type_error: 'Por favor seleccione un estado.',
+  }),
+  name: z.string({
+    invalid_type_error: 'Por favor ingrese un nombre.',
+  }),
+  description: z.string({
+    invalid_type_error: 'Por favor ingrese una descripcion.',
+  }),
+});
+ 
+const CreateProduct = FormSchema.omit({p_id: true});
+const UpdateProduct = FormSchema.omit({p_id: true});
 
 export async function fetchProducts() {
     noStore();
@@ -72,15 +113,6 @@ export async function fetchProducts() {
       console.error('Database Error:', error);
       throw new Error('Failed to fetch Images By id.');
     }
-  }
-
-  export function findImage(p_id: string, images: ProductImage[]): string {
-    for (let i = 0; i < images.length; i++) {
-      if (images[i].product_id === p_id) {
-        return images[i].image_url
-      }
-    }
-    return ''
   }
 
   const ITEMS_PER_PAGE = 8;
@@ -312,4 +344,98 @@ export async function fetchCategoryNameById(id:string) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch category name.');
   }
+}
+
+export async function updateProduct(
+  p_id: string,
+  prevState: State,
+  formData: FormData,
+): Promise<State> {
+  const validatedFields = UpdateProduct.safeParse({
+    name: formData.get('name') ?? '',
+    description: formData.get('description') ?? '',
+    price: Number(formData.get('price')) || 1,
+    state: formData.get('state') === '1' ? "1" : "0", 
+    movie_id: formData.get('movie_id') ?? '',
+    category_id: formData.get('category_id') ?? '',
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Update Invoice.',
+    };
+  }
+
+  const { name, description, price, state, movie_id, category_id } = validatedFields.data;
+  console.log("p_id: ", p_id)
+  console.log("name: ", name, "description: ", description, "price: ", price, "state: ", state, "movie_id: ", movie_id, "category_id: ", category_id)
+  try {
+    await sql`
+      UPDATE products
+      SET 
+          name = ${name},
+          price = ${price},
+          description = ${description},
+          state =  ${state}::bit,
+          movie_id = ${movie_id},
+          category_id = ${category_id}
+      WHERE p_id = ${p_id}
+    `;
+  } catch (error) {
+    console.error('Database Error:', error);
+    return { errors: {}, message: 'Database Error: Failed to Update Product.' };
+  }
+
+  console.log('Product Updated Successfully.');
+  revalidatePath('/admin');
+  redirect('/admin');
+}
+
+export async function createProduct(
+  prevState: State,
+  formData: FormData
+): Promise<State> { 
+  const validatedFields = CreateProduct.safeParse({
+    name: formData.get('name') ?? '',
+    description: formData.get('description') ?? '',
+    price: Number(formData.get('price')) || 1,
+    state: formData.get('state') === '1' ? '1' : '0',
+    movie_id: formData.get('movie_id') ?? '',
+    category_id: formData.get('category_id') ?? '',
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Create Product.',
+    };
+  }
+
+  const { name, description, price, state, movie_id, category_id } = validatedFields.data;
+
+  try {
+    await sql`
+      INSERT INTO products (name, description, price, state, movie_id, category_id)
+      VALUES (
+        ${name},
+        ${description},
+        ${price},
+        ${state}::bit,
+        ${movie_id},
+        ${category_id}
+      )
+    `;
+  } catch (error) {
+    console.error('Database Error:', error);
+    return {
+      errors: {},
+      message: 'Database Error: Failed to Create Product.',
+    };
+  }
+  console.log('Product Created Successfully.');
+  return {
+    errors: {},
+    message: 'Product created successfully.', 
+  };
 }

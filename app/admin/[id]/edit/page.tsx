@@ -11,9 +11,11 @@ export const metadata: Metadata = {
 export default async function Page({ params }: { params: { id: string } }) {
     const id = params.id;
 
-    const product = await fetchProductById(id);
-    const movies = await fetchMovies();
-    const categories = await fetchCategories();
+    const [product, movies, categories] = await Promise.all([
+        fetchProductById(id),
+        fetchMovies(),
+        fetchCategories(),
+    ]);
     if (!product) {
         notFound();
       }

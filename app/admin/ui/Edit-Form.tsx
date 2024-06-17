@@ -1,13 +1,13 @@
 'use client';
-import { Button } from '@/components/ui/button';
+
 import { CheckIcon, ClockIcon, CrossIcon, UserCircleIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useFormState } from 'react-dom';
-import { UpdateProduct } from './Buttons';
 import { Category, Movie, ProductForm } from '@/lib/definitions';
-import { products } from '@/app/lib/placeholder-data';
+import { updateProduct } from '@/lib/dataDB';
+import { Button } from '@nextui-org/react';
 
-export default function EditInvoiceForm({
+export default function EditProductForm({
     product,
     movies,
     categories,
@@ -16,8 +16,9 @@ export default function EditInvoiceForm({
   movies: Movie[]
   categories: Category[]
 }) {
-    const UpdateProductById = () => UpdateProduct({ id: product.p_id });
-    const [status, dispatch] = useFormState(UpdateProductById,null);
+    const initialState = { message: null, errors: {} };
+    const updateProductById = updateProduct.bind(null, product.p_id);
+    const [state, dispatch] = useFormState(updateProductById, initialState);
     return (
       <form className='mx-52 text-lg' action={dispatch}>
         <div className="rounded-md bg-gray-50 p-4 md:p-6">
@@ -41,7 +42,7 @@ export default function EditInvoiceForm({
             </label>
             <input
                   id="amount"
-                  name="name"
+                  name="description"
                   type="string"
                   defaultValue={product.description}
                   placeholder="Ingresa o modifica la descripcion del producto"
@@ -49,7 +50,6 @@ export default function EditInvoiceForm({
                 />
           </div>
 
-          {/* Invoice Amount */}
           <div className="mb-4">
             <label htmlFor="amount" className="mb-2 block text-lg font-medium">
               Escoge el precio del producto
@@ -58,7 +58,7 @@ export default function EditInvoiceForm({
               <div className="relative">
                 <input
                   id="amount"
-                  name="amount"
+                  name="price"
                   type="number"
                   step="0.01"
                   defaultValue={product.price}
@@ -75,7 +75,7 @@ export default function EditInvoiceForm({
             </label>
               <select
                 id="customer"
-                name="customerId"
+                name="movie_id"
                   className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-lg outline-2 placeholder:text-gray-500"
                 defaultValue={product.movie_id}
               >
@@ -93,7 +93,7 @@ export default function EditInvoiceForm({
             </label>
               <select
                 id="customer"
-                name="customerId"
+                name="category_id"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-lg outline-2 placeholder:text-gray-500"
                 defaultValue={product.category_id}
               >
@@ -105,8 +105,6 @@ export default function EditInvoiceForm({
               </select>
           </div>
           
-
-          {/* Invoice Status */}
           <fieldset>
             <legend className="mb-2 block text-lg font-medium">
             Setea el estado del producto
@@ -116,7 +114,7 @@ export default function EditInvoiceForm({
                 <div className="flex items-center">
                   <input
                     id="pending"
-                    name="status"
+                    name="state"
                     type="radio"
                     value="pending"
                     defaultChecked={product.state === '1'}
@@ -132,7 +130,7 @@ export default function EditInvoiceForm({
                 <div className="flex items-center">
                   <input
                     id="paid"
-                    name="status"
+                    name="state"
                     type="radio"
                     value="paid"
                     defaultChecked={product.state === '0'}
@@ -142,7 +140,7 @@ export default function EditInvoiceForm({
                     htmlFor="paid"
                     className="ml-2 flex cursor-pointer items-center gap-1.5 rounded-full bg-red-500 px-3 py-1.5 text-xs font-medium text-white"
                   >
-                    No-Activo <XIcon className="h-4 w-4" />
+                    Inactivo <XIcon className="h-4 w-4" />
                   </label>
                 </div>
               </div>
@@ -156,7 +154,7 @@ export default function EditInvoiceForm({
           >
             Cancel
           </Link>
-          <Button type="submit">Edita el producto</Button>
+          <Button className='border-2 rounded-lg' type="submit">Edita el producto</Button>
         </div>
       </form>
   );

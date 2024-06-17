@@ -6,6 +6,7 @@ import Table from "./ui/Table";
 import { fetchProductsPages } from "@/lib/dataDB";
 import Pagination from "../products/ui/Pagination";
 import Search from "../ui/Search";
+import { CreateProduct } from "./ui/Buttons";
 
 export default async function Admin({searchParams,
 }: {
@@ -28,7 +29,7 @@ export default async function Admin({searchParams,
           </button>
         </form>
       </div>
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+      {/* <div className="bg-white rounded-lg shadow-md p-6 mb-8">
         <h2 className="text-2xl font-bold mb-4">Agregar nuevo producto</h2>
         <div className="grid grid-cols-2 gap-6">
           <div>
@@ -60,7 +61,8 @@ export default async function Admin({searchParams,
         <div className="mt-6 text-right">
           <Button className="bg-gray-600 text-white rounded-full">Add Product</Button>
         </div>
-      </div>
+      </div> */}
+      <CreateProduct />
       <div className="bg-white rounded-lg shadow-md p-6 ">
         <h2 className="text-xl font-bold mb-4">Todos los productos</h2>
         <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">

@@ -1,7 +1,8 @@
 import notFound from "@/app/not-found";
 import Card from "@/app/ui/Card";
-import { fetchActiveFilteredProducts, fetchFilteredProducts, fetchProductsImages, findImage } from "@/lib/dataDB";
+import { fetchActiveFilteredProducts, fetchFilteredProducts, fetchProductsImages } from "@/lib/dataDB";
 import { ProductImage } from "@/lib/definitions";
+import { findImage } from "@/lib/utils";
 
 export default async function ProductsWrapper({ query,currentPage}:{
     query: string;

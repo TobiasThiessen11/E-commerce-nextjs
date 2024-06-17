@@ -1,8 +1,7 @@
 import Card from "@/app/ui/Card";
-import { fetchMostSoldProducts, fetchProductByMovie, fetchProductsImages, findImage } from "@/lib/dataDB"
-import { Product, ProductImage } from "@/lib/definitions";
-import { Button } from "@nextui-org/react"
-import { QueryResultRow } from "@vercel/postgres";
+import { fetchMostSoldProducts, fetchProductByMovie, fetchProductsImages } from "@/lib/dataDB"
+import { ProductImage } from "@/lib/definitions";
+import { findImage } from "@/lib/utils";
 
 const MasVendidos = "Mas vendidos";
 const StarWars = "Star Wars";

@@ -1,6 +1,6 @@
 import { uploadImages } from '@/lib/dataDB';
 import { CldUploadWidget } from 'next-cloudinary';
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function UploadImage() {
     const [resource, setResource] = useState();

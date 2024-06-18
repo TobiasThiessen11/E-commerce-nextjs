@@ -60,3 +60,10 @@ export type User = {
     movie_id  : string;
     category_id : string;
   };
+
+  export type ProductImageForm = {
+    pi_id: string;
+    product_id: string;
+    asset_id: string;
+    image_url: string;
+  };

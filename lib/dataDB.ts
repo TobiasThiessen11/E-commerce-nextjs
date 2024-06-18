@@ -115,6 +115,23 @@ export async function fetchProducts() {
     }
   }
 
+  export async function fetchAllInfoImageByProductId(id: string) {
+    noStore();
+    try {
+      const data = await sql<ProductImage>`
+        SELECT
+          *
+        FROM productsImages
+        WHERE productsImages.product_id = ${id};
+      `;
+      return data.rows
+      
+    } catch (error) {
+      console.error('Database Error:', error);
+      throw new Error('Failed to fetch Images By id.');
+    }
+  }
+
   const ITEMS_PER_PAGE = 8;
   export async function fetchFilteredProducts(
     query: string,
@@ -444,14 +461,16 @@ export async function createProduct(
 export async function uploadImages(
   product_id: string,
  asset_id: string,
- url: string
+ image_url: string
 ) { 
+  console.log('Uploading Image:', product_id, asset_id, image_url)
   try {
     await sql`
-      INSERT INTO productsImages (product_id, image_url)
+      INSERT INTO productsImages (product_id, asset_id, image_url)
       VALUES (
+        ${product_id},
         ${asset_id},
-        ${url}
+        ${image_url}
       )
     `;
   } catch (error) {
@@ -461,4 +480,24 @@ export async function uploadImages(
       message: 'Database Error: Failed to Create Product.',
     };
   }
+  console.log('Image Uploaded Successfully.');
+}
+
+export async function deleteImageById(pi_id: string) {
+  console.log('Deleting Image:', pi_id)
+  try {
+    await sql`
+      DELETE FROM productsImages
+      WHERE pi_id = ${pi_id}
+    `;
+  } catch (error) {
+    console.error('Database Error:', error);
+    return {
+      errors: {},
+      message: 'Database Error: Failed to Delete Image.',
+    };
+  }
+  console.log('Image Deleted Successfully.');
+  revalidatePath('/admin');
+  redirect('/admin');
 }

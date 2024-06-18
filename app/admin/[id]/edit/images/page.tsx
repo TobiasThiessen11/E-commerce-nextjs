@@ -1,25 +1,14 @@
-import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
-import { fetchCategories, fetchMovies, fetchProductById, fetchProducts } from '@/lib/dataDB';
-import Form from '@/app/admin/ui/Edit-Form'
-import Breadcrumbs from '../../ui/Breadcrumbs';
- 
-export const metadata: Metadata = {
-    title: 'Productos',
-  };
+import Breadcrumbs from '@/app/admin/ui/Breadcrumbs';
+import { fetchAllInfoImageByProductId, fetchImageByProductId, fetchProductById } from '@/lib/dataDB';
+import React from 'react'
+import Form from '@/app/admin/ui/Image-Form';
 
 export default async function Page({ params }: { params: { id: string } }) {
     const id = params.id;
-
-    const [product, movies, categories] = await Promise.all([
+    const [product, images] = await Promise.all([
         fetchProductById(id),
-        fetchMovies(),
-        fetchCategories(),
+        fetchAllInfoImageByProductId(id),
     ]);
-    if (!product) {
-        notFound();
-      }
-
     return (
         <main>
         <Breadcrumbs
@@ -36,7 +25,9 @@ export default async function Page({ params }: { params: { id: string } }) {
             }
             ]}
         />
-        <Form product={product} movies={movies} categories={categories} />
+        <Form product={product} images={images} />
         </main>
     );
 }
+
+

@@ -11,12 +11,10 @@ export default function Filter() {
     const [isExpanded, setIsExpanded] = useState(false); // Estado para controlar la visibilidad en móviles
 
     const categories = [
-        "Todos",
         "Peluches",
         "Juguetes",
         "Coleccionables",
         "Tecnologia",
-        "Otro",
     ];  
 
     const movies = [
@@ -25,8 +23,6 @@ export default function Filter() {
         "Lilo y Stitch",
         "Toy Story",
         "Wall-E",
-        "Tarzan",
-        "La era del Hielo",
         "Mickey Mouse",
     ]; 
 

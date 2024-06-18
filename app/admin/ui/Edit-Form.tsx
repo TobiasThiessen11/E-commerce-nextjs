@@ -21,23 +21,23 @@ export default function EditProductForm({
     const [state, dispatch] = useFormState(updateProductById, initialState);
     return (
       <form className='mx-52 text-lg' action={dispatch}>
-        <div className="rounded-md bg-gray-50 p-4 md:p-6">
-          <div className="mb-4">
-            <label htmlFor="customer" className="mb-2 block text-lg font-medium">
-              Cambiar el nombre del producto
-            </label>
-            <input
-                  id="amount"
-                  name="name"
-                  type="string"
-                  defaultValue={product.name}
-                  placeholder="Ingresa o modifica el nombre del producto"
-                  className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-lg outline-2 placeholder:text-gray-500"
-                />
-          </div>
+      <div className="rounded-md bg-gray-50 p-4 md:p-6">
+        <div className="mb-4">
+        <label htmlFor="customer" className="mb-2 block text-lg font-medium">
+          Cambiar el nombre del producto
+        </label>
+        <input
+            id="amount"
+            name="name"
+            type="string"
+            defaultValue={product.name}
+            placeholder="Ingresa o modifica el nombre del producto"
+            className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-lg outline-2 placeholder:text-gray-500"
+          />
+        </div>
 
-          <div className="mb-4">
-            <label htmlFor="customer" className="mb-2 block text-lg font-medium">
+        <div className="mb-4">
+        <label htmlFor="customer" className="mb-2 block text-lg font-medium">
               Cambiar la descripcion del producto
             </label>
             <input
@@ -154,7 +154,8 @@ export default function EditProductForm({
           >
             Cancel
           </Link>
-          <Button className='border-2 rounded-lg' type="submit">Edita el producto</Button>
+          <Link href={`/admin/${product.p_id}/edit/images`} className='border-2 rounded-lg p-1'> Editar las Imagenes</Link>
+          <Button className='border-2 rounded-lg bg-slate-300' type="submit">Edita el producto</Button>
         </div>
       </form>
   );

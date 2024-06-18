@@ -209,7 +209,7 @@ export async function fetchProducts() {
           categories.name ILIKE ${`%${query}%`} AND products.state = B'1'
 
     `;
-      const totalPages = Math.floor(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+      const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
       return totalPages;
     } catch (error) {
       console.error('Database Error:', error);
@@ -452,10 +452,8 @@ export async function createProduct(
     };
   }
   console.log('Product Created Successfully.');
-  return {
-    errors: {},
-    message: 'Product created successfully.', 
-  };
+  revalidatePath('/admin');
+  redirect('/admin');
 }
 
 export async function uploadImages(
@@ -481,6 +479,8 @@ export async function uploadImages(
     };
   }
   console.log('Image Uploaded Successfully.');
+  revalidatePath(`/admin/${product_id}/edit/images`);
+  redirect(`/admin/${product_id}/edit/images`);
 }
 
 export async function deleteImageById(pi_id: string) {

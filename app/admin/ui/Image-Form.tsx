@@ -31,7 +31,7 @@ return (
                 
                 <div className='grid grid-cols-2 border-2 m-2'>
                         {images.map((image) => (
-                                <div key={image.pi_id}>
+                                <div key={image.pi_id} className='flex flex-col items-center'>
                                         <Image 
                                                 src={image.image_url}
                                                 alt={image.image_url}
@@ -41,7 +41,7 @@ return (
                                         />
                                         <Button 
                                                 onClick={() => {deleteImageById(image.pi_id)}}
-                                                className='text-center w-1/2 cursor-pointer'>
+                                                className='text-center text-md w-1/2 cursor-pointer'>
                                                     Eliminar Imagen
                                         </Button>
                                         

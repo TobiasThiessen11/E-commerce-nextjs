@@ -67,7 +67,7 @@ export default function Home() {
           <div className="space-y-3">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white md:text-5xl">¿Por que elegirnos?</h2>
             <p className="mx-auto max-w-[700px] text-white md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
-              Le proveemos la mejor experiencia de compra para que puedas ser el protagonista de tus pelúculas favoritas
+              Le proveemos la mejor experiencia de compra para que puedas ser el protagonista de tus peliculas favoritas
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

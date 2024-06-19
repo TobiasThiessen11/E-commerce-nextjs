@@ -27,7 +27,7 @@ export default function Home() {
             </p>
             <div className="">
               <Link
-                href="/WALL·E"
+                href="/products"
                 className="inline-block px-8 py-2 text-2xl mt-2 font-semibold bg-black rounded-md hover:bg-primary-dark">
                 Comprar
               </Link>

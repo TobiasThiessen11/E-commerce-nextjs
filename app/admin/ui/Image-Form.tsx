@@ -20,7 +20,7 @@ export default function EditProductForm({
         await uploadImages(p_id, asset_id, secure_url);
     }
 return (
-    <div className='mx-52 text-lg grid grid-cols-2'>
+    <div className='md:mx-52 text-lg md:grid grid-cols-2'>
         <div className='text-2xl text-center text-bold'>
             <h1 className='text-xl text-center'>Estas son las Imagenes de tu producto</h1>
                 {images.length === 0 ? (

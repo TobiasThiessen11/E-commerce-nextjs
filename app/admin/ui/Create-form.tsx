@@ -14,7 +14,7 @@ export default function Form({ movies, categories }: { movies:Movie[], categorie
   const initialState = { message: null, errors: {} };
   const [state, dispatch] = useFormState(createProduct, initialState);
   return (
-    <form className='mx-52 text-lg' action={dispatch}>
+    <form className='md:mx-52 text-lg' action={dispatch}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         <div className="mb-4">
           <label htmlFor="customer" className="mb-2 block text-lg font-medium">

@@ -15,6 +15,7 @@ export default function Filter() {
         "Juguetes",
         "Coleccionables",
         "Tecnologia",
+        "Ropa",
     ];  
 
     const movies = [

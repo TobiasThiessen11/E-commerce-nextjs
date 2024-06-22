@@ -22,7 +22,6 @@ export const Header = () => {
         <nav className='gap-6 items-center mx-3  hidden text-black font-semibold lg:flex'>
           <Link href={"/products"}>Productos</Link>
           <Link href={"/sale"}>Oferta</Link>
-          <Link href={"/contact"}>Nuevos Arrivos</Link>
           <Link href={"/cart"}>Carrito</Link>
           <Link href={"/login"} className='bg-secondary p-2 px-4 rounded-full text-white'>
             Login
@@ -31,12 +30,11 @@ export const Header = () => {
         <Menu className='mr-2 w-10 p-0 h-auto cursor-pointer lg:hidden' onClick={toggleMobileMenu} />
       </header>
       {isMobileMenuOpen && (
-        <div className='lg:hidden bg-white text-black p-4'>
+        <div className='lg:hidden bg-white text-center text-black p-4'>
           <Link href={"/products"} onClick={toggleMobileMenu} className='block py-2'>Productos</Link>
           <Link href={"/sale"} onClick={toggleMobileMenu} className='block py-2'>Oferta</Link>
-          <Link href={"/contact"} onClick={toggleMobileMenu} className='block py-2'>Nuevos Arrivos</Link>
-          <Link href={"/cart"} onClick={toggleMobileMenu} className='block py-2'>Carrito(0)</Link>
-          <Link href={"/login"} onClick={toggleMobileMenu} className='block py-2 bg-secondary p-2 px-4 rounded-full text-white'>
+          <Link href={"/cart"} onClick={toggleMobileMenu} className='block py-2'>Carrito</Link>
+          <Link href={"/login"} onClick={toggleMobileMenu} className='block py-2 bg-secondary p-2 text-center rounded-md text-white'>
             Login
           </Link>
         </div>

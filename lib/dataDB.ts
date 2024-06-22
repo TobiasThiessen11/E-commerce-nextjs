@@ -204,9 +204,12 @@ export async function fetchProducts() {
       JOIN movies ON products.movie_id = movies.m_id
       JOIN categories ON products.category_id = categories.c_id
       WHERE
-          products.name ILIKE ${`%${query}%`} OR
-          movies.name ILIKE ${`%${query}%`} OR
-          categories.name ILIKE ${`%${query}%`} AND products.state = B'1'
+          products.state = B'1' AND (
+            products.name ILIKE ${`%${query}%`} OR
+            movies.name ILIKE ${`%${query}%`} OR
+            categories.name ILIKE ${`%${query}%`}
+          )
+           
 
     `;
       const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);

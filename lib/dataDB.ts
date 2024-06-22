@@ -389,8 +389,6 @@ export async function updateProduct(
   }
 
   const { name, description, price, state, movie_id, category_id } = validatedFields.data;
-  console.log("p_id: ", p_id)
-  console.log("name: ", name, "description: ", description, "price: ", price, "state: ", state, "movie_id: ", movie_id, "category_id: ", category_id)
   try {
     await sql`
       UPDATE products

@@ -1,7 +1,8 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Button } from '@nextui-org/react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 interface Banner {
     title: string;
@@ -17,7 +18,9 @@ const Banner: React.FC<Banner> = ({image,title,description}) => {
         <div className='text-center'>
             <h1 className='text-5xl font-bold'>{title}</h1>
             <h3>{description}</h3>
-            <Button href='/products' className='rounded-md mt-4 bg-primary text-white'>Mirá las ofertas</Button>
+            <Link href={"/products"}>
+                <Button  className='rounded-md mt-4 bg-primary text-white'>Mirá las ofertas</Button>
+            </Link>
         </div>
     </div>
         <div className='md:w-1/3'>

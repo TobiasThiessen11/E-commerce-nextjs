@@ -11,7 +11,7 @@ interface MovieCardProps {
 const NewsCard: React.FC<MovieCardProps> = ({ image,title}) => {
   return (
     <div className=''>
-      <Link href={`/news/${title}`}>
+      <Link href={`/movies/${title}`}>
         <Image 
             src={image} 
             alt={title} 

@@ -50,12 +50,12 @@ export default function Home() {
         <h1 className="text-center text-2xl mb-6 font-bold sm:text-4xl md:text-5xl">Encontra tus personajes favoritos</h1>
         <div className="max-w-6xl mx-auto px-4 sm:px-1 lg:px-1">
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
-              <MovieCard image="/movies/cars.png" title="Cars"/>
-              <MovieCard image="/movies/increibles.png" title="Los Increibles"/>
+              <MovieCard image="/movies/enredados.png" title="Enredados"/>
+              <MovieCard image="/movies/walle.png" title="Wall-e"/>
               <MovieCard image="/movies/lilo.png" title="Lilo & Stitch"/>
-              <MovieCard image="/movies/mounster-inc.png" title="Monster Inc"/>
-              <MovieCard image="/movies/nemo.png" title="Buscando a Nemo"/>
-              <MovieCard image="/movies/shrek.png" title="Shrek"/>
+              <MovieCard image="/movies/toy-story.png" title="Toy Story"/>
+              <MovieCard image="/movies/mickey.png" title="Mickey Mouse"/>
+              <MovieCard image="/movies/star-wars.png" title="Star Wars"/>
           </div>
         </div>
       </section>

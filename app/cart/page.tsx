@@ -4,7 +4,7 @@ import { useAppContext } from "../context"
 import CardCart from "./ui/CardCart"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
+import { payment } from "../api/create-preference/route"
 
 interface Item {
   id: string
@@ -17,11 +17,9 @@ interface Item {
 export default function Cart() {
   const { cartItems, clearCart, getCartTotal } = useAppContext()
   const [isClient, setIsClient] = useState(false)
-  const [preferenceId, setPreferenceId] = useState<string | null>(null);
 
   useEffect(() => {
     setIsClient(true)
-    initMercadoPago('TEST-7ac60557-9fb1-4986-ae30-afbfba84f360', { locale: 'es-AR' });
   }, [])
 
   if (!isClient) {
@@ -31,15 +29,7 @@ export default function Cart() {
   const handleClick = async () => {
     try {
       const email = prompt('Por favor, ingrese su email:');
-      const response = await fetch('/api/create-preference', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ items: cartItems, email }),
-      });
-      const data = await response.json();
-      setPreferenceId(data.preferenceId);
+      await payment(cartItems, email!);
     } catch (error) {
       console.error('Error creating preference:', error);
     }
@@ -78,7 +68,6 @@ export default function Cart() {
           <div className="mt-auto grid grid-cols-2 items-center gap-2 w-full">
             <Button disabled={cartItems.length === 0} size="lg" onClick={handleClick} >Procesar pago</Button>
             <Button disabled={cartItems.length === 0} variant="outline" size="lg" onClick={clearCart}>Eliminar Carrito</Button>
-            {preferenceId && <Wallet initialization={{ preferenceId }} />}  
           </div>
         </div>
       </div>

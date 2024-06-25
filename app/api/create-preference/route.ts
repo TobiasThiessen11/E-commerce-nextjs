@@ -1,16 +1,22 @@
+"use server";
 import { sql } from '@vercel/postgres';
 import { MercadoPagoConfig, Preference } from 'mercadopago';
-import { NextRequest, NextResponse } from 'next/server';
+import { redirect } from "next/navigation";
 
-const client = new MercadoPagoConfig({ accessToken: "TEST-5113519851838077-060615-2bbfd7b8a6495ed0b67f8f618bb0f4a3-272885138" });
+const client = new MercadoPagoConfig({
+  accessToken: process.env.MP_ACCESS_TOKEN!
+});
 
-export async function POST(request: NextRequest) {
-  try {
-    const { items,email } = await request.json();
-    if (!items || items.length === 0) {
-      return NextResponse.json({ message: 'No items provided' }, { status: 400 });
-    }
+interface Item {
+  p_id: string
+  name: string
+  quantity: number
+  price : number
 
+}
+
+export async function payment(items:Item[], email:string) {
+    
     const { rows } = await sql`INSERT INTO sales (date, transaction_mp_id, person_email) VALUES (NOW(), 1, ${email}) RETURNING s_id`;
     const s_id = rows[0].s_id;
     
@@ -21,23 +27,72 @@ export async function POST(request: NextRequest) {
       VALUES (${item.price},${item.quantity},${item.price * item.quantity},${s_id},${item.p_id})`;
     }
 
-    const preference = new Preference(client);
+    const title = "MovieMerch"
+           
+    if (process.env.NODE_ENV === "development") {
+      const preference = await new Preference(client).create({
+        body: {
+          items: [
+            {
+              title,
+              description: "MovieMerch",
+              unit_price: getSuma(items),
+              quantity: getQuantity(items),
+              id: s_id,
+  
+            },
+          ],
+          external_reference: s_id,
+          back_urls: {
+            success: "http://localhost:3000 ",
+            failure: "http://localhost:3000/cart",
+          },
+          auto_return: "approved",
+        },
+  
+      });
+      redirect(preference.init_point!);
+    }
+    else {
+      const preference = await new Preference(client).create({
+        body: {
+          items: [
+            {
+              title,
+              description: "MovieMerch",
+              unit_price: getSuma(items),
+              quantity: getQuantity(items),
+              id: s_id,
+  
+            },
+          ],
+          external_reference: s_id,
+          back_urls: {
+            success: "https://moviemerch.vercel.app ",
+            failure: "https://moviemerch.vercel.app/cart",
+          },
+          auto_return: "approved",
+        },
+  
+      });
+      redirect(preference.init_point!);
+    }
+}
 
-    
-    const response = await preference.create({
-      body: {
-        external_reference: s_id,
-        items: items.map((item: { name: string; quantity: number; price: number }) => ({
-          title: item.name,
-          quantity: item.quantity,
-          unit_price: Number(item.price) ,
-        }))
-      }
-    });
+function getSuma(items: Item[]): number {
+  
+  let suma = 0;
+  items.map((item) => {
+    suma += item.price * item.quantity;
+  });
+  return suma;
+}
 
-    return NextResponse.json({ preferenceId: response.id, s_id });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
-  }
+function getQuantity(items: Item[]): number {
+  
+  let quantity = 0;
+  items.map((item) => {
+    quantity += item.quantity;
+  });
+  return quantity;
 }

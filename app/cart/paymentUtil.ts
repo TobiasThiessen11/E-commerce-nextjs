@@ -29,6 +29,31 @@ export async function payment(items:Item[], email:string) {
 
     const title = "MovieMerch"
            
+    if (process.env.NODE_ENV === "development") {
+      const preference = await new Preference(client).create({
+        body: {
+          items: [
+            {
+              title,
+              description: "MovieMerch",
+              unit_price: getSuma(items),
+              quantity: getQuantity(items),
+              id: s_id,
+  
+            },
+          ],
+          external_reference: s_id,
+          back_urls: {
+            success: "http://localhost:3000 ",
+            failure: "http://localhost:3000/cart",
+          },
+          auto_return: "approved",
+        },
+  
+      });
+      redirect(preference.init_point!);
+    }
+    else {
       const preference = await new Preference(client).create({
         body: {
           items: [
@@ -51,8 +76,8 @@ export async function payment(items:Item[], email:string) {
   
       });
       redirect(preference.init_point!);
-  }
-
+    }
+}
 
 function getSuma(items: Item[]): number {
   

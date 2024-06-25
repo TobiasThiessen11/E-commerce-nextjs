@@ -4,7 +4,7 @@ import { useAppContext } from "../context"
 import CardCart from "./ui/CardCart"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { payment } from "../api/create-preference/route"
+import { payment } from "./paymentUtil"
 
 interface Item {
   id: string

@@ -5,6 +5,7 @@ import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import {CartProvider } from "./context";
 import HeaderLogin from "./ui/HeaderLogin";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Darker_Grotesque({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <main className="flex-grow">
           <CartProvider>
             {children}
+            <Toaster/>
           </CartProvider>
         </main>
         <Footer />

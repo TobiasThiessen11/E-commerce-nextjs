@@ -5,6 +5,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import MyGallery from "../ui/MyGallery";
 import notFound from "@/app/not-found";
 import AddCartButton from "../ui/AddCartButton";
+import { Toaster } from "@/components/ui/toaster";
 
 export default async function Page({ params }: { params: { p_id: string } }) {
     const id = params.p_id;

@@ -44,7 +44,7 @@ export async function payment(items:Item[], email:string) {
           ],
           external_reference: s_id,
           back_urls: {
-            success: "http://localhost:3000 ",
+            success: "http://localhost:3000/cart/succes ",
             failure: "http://localhost:3000/cart",
           },
           auto_return: "approved",
@@ -68,7 +68,7 @@ export async function payment(items:Item[], email:string) {
           ],
           external_reference: s_id,
           back_urls: {
-            success: "https://moviemerch.vercel.app ",
+            success: "https://moviemerch.vercel.app/cart/succes ",
             failure: "https://moviemerch.vercel.app/cart",
           },
           auto_return: "approved",

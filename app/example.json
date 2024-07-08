@@ -1,0 +1,87 @@
+[
+    {
+      "name": "Rapunzel",
+      "image": "/img/rapunzel.png",
+      "description": "Muñeca de Trapo Rapunzel",
+      "price": "$20.310",
+      "id": 1
+    },
+    {
+      "name": "BD-1",
+      "image": "/img/BD-1.png",
+      "description": "Muñeco de BD-1",
+      "price": "$150.540",
+      "id": 2
+    },
+    {
+      "name": "Stitch",
+      "image": "/img/Stitch.png",
+      "description": "Muñeco de Stitch",
+      "price": "$50.540",
+      "id": 3
+    },
+    {
+      "name": "Woody",
+      "image": "/img/woody.png",
+      "description": "Muñeco de Woody(tengo una serpiente en mi bota)",
+      "price": "$30.540",
+      "id": 4
+    },
+    {
+      "name": "Buzz Lightyear",
+      "image": "/img/buzz.png",
+      "description": "Poster de WALL·E",
+      "price": "$50.540",
+      "id": 5
+    },
+    {
+      "name": "Rapunzel",
+      "image": "/img/rapunzel.png",
+      "description": "Muñeca de Rapunzel",
+      "price": "$20.310",
+      "id": 6
+    },
+    {
+      "name": "BD-1",
+      "image": "/img/BD-1.png",
+      "description": "Muñeco de BD-1",
+      "price": "$150.540",
+      "id": 7
+    },
+    {
+      "name": "Wall-E",
+      "image": "/img/peluche-walle.png",
+      "description": "Peluche super suavecito de walle",
+      "price": "$29.000",
+      "id": 8
+    },
+    {
+      "name": "Nave Lego Star Wars",
+      "image": "/img/lego-starwars.png",
+      "description": "Nave super epica",
+      "price": "$74.999",
+      "id": 9
+    },
+    {
+      "name": "Buzz Lightyear",
+      "image": "/img/buzz.png",
+      "description": "Poster de WALL·E",
+      "price": "$50.540",
+      "id": 10
+    },
+    {
+      "name": "Woody",
+      "image": "/img/woody.png",
+      "description": "Muñeco de Woody",
+      "price": "$30.540",
+      "id": 11
+    },
+    {
+      "name": "WALL·E",
+      "image": "/img/buzz.png",
+      "description": "Poster de WALL·E",
+      "price": "$50.540",
+      "id": 12
+    }
+  ]
+  

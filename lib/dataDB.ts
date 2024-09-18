@@ -305,8 +305,6 @@ export async function fetchLeastExpensiveProducts() {
           p.*
       FROM
           Products p
-      ORDER BY
-          p.price ASC
       LIMIT 8;`;
       return products.rows;
   } catch (error) {
